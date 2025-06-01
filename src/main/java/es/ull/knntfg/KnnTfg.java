@@ -15,17 +15,17 @@ public class KnnTfg {
 	static Dataset datos = new Dataset();
 
 	public static void main(String[] args) throws IOException {
-		print("Iniciando el programa");
+		Logger.getLogger("Iniciando el programa");
 		boolean salida = false;
 		while(!salida) {
-			print("Seleccione una opción: ");
-			print("[1] Cargar un dataset ");
-			print("[2] Guardar un dataset ");
-			print("[3] Modificar un dataset ");
-			print("[4] Mostrar información ");
-			print("[5] Salir del programa ");
-			print("[6] Realizar experimentación ");
-			print("[7] Algoritmo KNN para una instancia ");
+			Logger.getLogger("Seleccione una opción: ");
+			Logger.getLogger("[1] Cargar un dataset ");
+			Logger.getLogger("[2] Guardar un dataset ");
+			Logger.getLogger("[3] Modificar un dataset ");
+			Logger.getLogger("[4] Mostrar información ");
+			Logger.getLogger("[5] Salir del programa ");
+			Logger.getLogger("[6] Realizar experimentación ");
+			Logger.getLogger("[7] Algoritmo KNN para una instancia ");
 			int opcion = 1;
 			Scanner scanner = new Scanner(System.in);
 			opcion = scanner.nextInt();
@@ -40,7 +40,7 @@ public class KnnTfg {
 		switch(opcion) {
 			case(1):
 				archivo = readFile(ruta);
-				print("Cargando el dataset: ");
+				Logger.getLogger("Cargando el dataset: ");
 				if(Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
 					Logger.getLogger(KNN_TFG).info(archivo);
 				}
@@ -59,17 +59,17 @@ public class KnnTfg {
 				info(datos);
 				break;
 			case(5):
-				print("Saliendo del programa.");
+				Logger.getLogger("Saliendo del programa.");
 				return true;
 			case(6):
 				experimentar(datos);
 				break;
 			case(7):
-				print("Añada el valor de k aquí: ");
+				Logger.getLogger("Añada el valor de k aquí: ");
 				int k = scanner.nextInt();
 				KNN intento = new KNN(k);
 				String valoresString = "";
-				print("Introduce los valores, por favor: ");
+				Logger.getLogger("Introduce los valores, por favor: ");
 				Scanner scanner1 = new Scanner(System.in);
 				valoresString = scanner1.nextLine();
 				String[] subcadenas = valoresString.split(",");
@@ -87,7 +87,7 @@ public class KnnTfg {
 					copiaCrudos.delete(copiaCrudos.numeroCasos()-1);
 					instance.deleteClase();
 				}
-				print("La clase elegida es: ");
+				Logger.getLogger("La clase elegida es: ");
 				if(Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
 					Logger.getLogger(KNN_TFG).info(intento.clasificar(copiaCrudos, instance));
 				}
