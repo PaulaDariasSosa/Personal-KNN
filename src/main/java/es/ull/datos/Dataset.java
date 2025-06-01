@@ -62,7 +62,9 @@ public class Dataset {
 	
 	// Print
 	public void print() {
-		Logger.getGlobal().info(this.toString());
+		if(!Logger.getGlobal().isLoggable(java.util.logging.Level.INFO)) {
+			Logger.getGlobal().info(this.toString());
+		}
 	}
 	
 	// toString

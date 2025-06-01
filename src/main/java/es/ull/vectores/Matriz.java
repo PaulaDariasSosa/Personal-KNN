@@ -74,7 +74,7 @@ public class Matriz {
         Matriz result = new Matriz(matrixA.getNumRows(), matrixB.getNumCols());
         for (int i = 0; i < matrixA.getNumRows(); i++) {
             for (int j = 0; j < matrixB.getNumCols(); j++) {
-                double value = matrixA.matrix.get(i).productoEscalar(getColumn((ArrayList<Vector>) matrixB.matrix, j));
+                double value = matrixA.matrix.get(i).productoEscalar(getColumn(matrixB.matrix, j));
                 Vector aux = result.matrix.get(i);
                 aux.set(j, value);
                 result.matrix.set(i, aux);
