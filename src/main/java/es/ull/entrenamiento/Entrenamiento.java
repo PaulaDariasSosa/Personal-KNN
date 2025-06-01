@@ -3,6 +3,7 @@ package entrenamiento;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.*;
 
 import clasificacion.KNN;
@@ -40,7 +41,7 @@ public class Entrenamiento {
 		Dataset testset = new Dataset(datos.getAtributosEmpty());
 		clases = datos.getClases();
 		ArrayList<Integer> indices = new ArrayList<>();
-		Random random = new Random(semilla);
+		SecureRandom  random = new SecureRandom();
 		while(indices.size() < datos.NumeroCasos()*porcentaje) {
 			int randomNumber = random.nextInt(datos.NumeroCasos());
 			if (!indices.contains(randomNumber)) {
