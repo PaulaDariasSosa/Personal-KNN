@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Dataset {
 	private List<Atributo> atributos;
@@ -61,7 +62,7 @@ public class Dataset {
 	
 	// Print
 	public void print() {
-		System.out.println(this.toString());
+		Logger.getGlobal().info(this.toString());
 	}
 	
 	// toString
@@ -225,7 +226,7 @@ public class Dataset {
 		this.preprocesado = opcion;
 	}
 	
-	public void setAtributos(ArrayList<Atributo> nuevos) {
+	public void setAtributos(List<Atributo> nuevos) {
 		this.atributos = nuevos;
 	}
 	
