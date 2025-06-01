@@ -75,12 +75,17 @@ public class Entrenamiento {
 			if (clase.equals(test.getInstance(i).getClase())) aciertos += 1;
 		}
 		Logger.getLogger(Entrenamiento.class.getName()).info("La precisión predictiva: ");
-		Logger.getLogger(Entrenamiento.class.getName()).info(String.valueOf(aciertos));
-		Logger.getLogger(Entrenamiento.class.getName()).info(String.valueOf(" / "));
-		Logger.getLogger(Entrenamiento.class.getName()).info(String.valueOf(test.numeroCasos()));
+		if(!Logger.getGlobal().isLoggable(java.util.logging.Level.INFO)) {
+			Logger.getLogger(Entrenamiento.class.getName()).info(String.valueOf(aciertos));
+		}
+		Logger.getLogger(Entrenamiento.class.getName()).info(" / ");
+		if(!Logger.getGlobal().isLoggable(java.util.logging.Level.INFO)) {
+			Logger.getLogger(Entrenamiento.class.getName()).info(String.valueOf(test.numeroCasos()));
+		}
 		Double precision = (aciertos/test.numeroCasos())*100;
-		Logger.getLogger(Entrenamiento.class.getName()).info(String.valueOf(precision));
-		
+		if(!Logger.getGlobal().isLoggable(java.util.logging.Level.INFO)) {
+			Logger.getLogger(Entrenamiento.class.getName()).info(String.valueOf(precision));
+		}
 	}
 	
 	public void generarMatriz(int valorK) {
@@ -95,7 +100,9 @@ public class Entrenamiento {
 			String clase = (new KNN(valorK).clasificar(train, nueva));
 			confusion.set( clases.indexOf(test.getInstance(i).getClase()),clases.indexOf(clase),confusion.get(clases.indexOf(test.getInstance(i).getClase()),clases.indexOf(clase))+1);
 		}
-		Logger.getLogger(Entrenamiento.class.getName()).info(clases.toString());
+		if(!Logger.getGlobal().isLoggable(java.util.logging.Level.INFO)) {
+			Logger.getLogger(Entrenamiento.class.getName()).info(clases.toString());
+		}
 		confusion.print();
 	}
 	
