@@ -18,14 +18,15 @@ public class KnnTfg {
 		print("Iniciando el programa");
 		boolean salida = false;
 		while(!salida) {
-			Logger.getLogger("Seleccione una opción: ");
-			print("[1] Cargar un dataset ");
-			print("[2] Guardar un dataset ");
-			print("[3] Modificar un dataset ");
-			print("[4] Mostrar información ");
-			print("[5] Salir del programa ");
-			print("[6] Realizar experimentación ");
-			print("[7] Algoritmo KNN para una instancia ");
+			String[] opciones = {
+					"[1] Cargar un dataset",
+					"[2] Guardar dataset",
+					"[3] Modificar dataset",
+					"[4] Información del dataset",
+					"[5] Salir",
+					"[6] Experimentación",
+					"[7] Clasificación con KNN"};
+			print(opciones);
 			int opcion = 1;
 			Scanner scanner = new Scanner(System.in);
 			opcion = scanner.nextInt();
@@ -97,11 +98,12 @@ public class KnnTfg {
 		int opcion = 2;
 		String archivo = "";
 		while (opcion != 4) {
-			print("Se debe especificar la ruta y nombre del archivo: ");
-			print("[1] Introducir nombre");
-			print("[2] Mostrar ruta ");
-			print("[3] Cambiar ruta ");
-			print("[4] Salir ");
+			String[] opcionesRead = {
+					"[1] Introducir nombre del archivo",
+					"[2] Mostrar ruta actual",
+					"[3] Cambiar ruta",
+					"[4] Salir"};
+			print(opcionesRead);
 			Scanner scanner = new Scanner(System.in);
 			opcion = scanner.nextInt();
 			switch(opcion) {
@@ -129,12 +131,13 @@ public class KnnTfg {
 		int opcion = 2;
 		String valores = "";
 		while (opcion != 5) {
-			print("Elija una opción de modificación ");
-			print("[1] Añadir instancia ");
-			print("[2] Eliminar instancia ");
-			print("[3] Modificar instancia ");
-			print("[4] Cambiar peso de los atributos ");
-			print("[5] Salir ");
+			String[] opcionesModify = {
+					"[1] Añadir instancia",
+					"[2] Eliminar instancia",
+					"[3] Modificar instancia",
+					"[4] Cambiar peso de los atributos",
+					"[5] Salir"};
+			print(opcionesModify);
 			Scanner scanner = new Scanner(System.in);
 			opcion = scanner.nextInt();
 			switch(opcion) {
@@ -184,11 +187,12 @@ public class KnnTfg {
 	}
 	
 	public static Dataset preprocesar(Dataset data) {
-		print("Seleccione la opción de preprocesado: ");
-		print("[1] Datos crudos ");
-		print("[2] Rango 0-1 "); // por defecto
-		print("[3] Estandarización ");
-		print("[4] Salir ");
+		String[] opcionesPreprocesado = {
+				"[1] Datos crudos",
+				"[2] Rango 0-1 (por defecto)",
+				"[3] Estandarización",
+				"[4] Salir"};
+		print(opcionesPreprocesado);
 		int opcion = 1;
 		Scanner scanner = new Scanner(System.in);
 		opcion = scanner.nextInt();
@@ -219,10 +223,12 @@ public class KnnTfg {
 	}
 	
 	public static Dataset cambiarPesos(Dataset data) {
-		print("Seleccione la opción de cambio de pesos: ");
-		print("[1] Asignar pesos distintos a todos los atributos ");
-		print("[2] Mismo peso para todos los atributos "); // por defecto ( valor 1 )
-		print("[3] Cambiar peso un atributo");
+		String[] opcionesPesos = {
+				"[1] Asignar pesos distintos a todos los atributos",
+				"[2] Mismo peso para todos los atributos (por defecto)",
+				"[3] Cambiar peso de un atributo",
+				"[4] Salir"};
+		print(opcionesPesos);
 		int opcion = 1;
 		Scanner scanner = new Scanner(System.in);
 		opcion = scanner.nextInt();
@@ -262,12 +268,13 @@ public class KnnTfg {
 	}
 	
 	public static void info(Dataset data) {
-		print("Seleccione una opción de información: ");
-		print("[1] Mostrar dataset ");
-		print("[2] Mostrar instancia ");
-		print("[3] Mostrar información atributos cuantitativos");
-		print("[4] Mostrar información atributos cualitativos");
-		print("[5] Mostrar pesos de los atributos");
+		String[] opcionesInfo = {
+				"[1] Mostrar dataset",
+				"[2] Mostrar instancia",
+				"[3] Mostrar información atributos cuantitativos",
+				"[4] Mostrar información atributos cualitativos",
+				"[5] Mostrar pesos de los atributos"};
+		print(opcionesInfo);
 		int opcion = 1;
 		Scanner scanner = new Scanner(System.in);
 		opcion = scanner.nextInt();
@@ -299,11 +306,13 @@ public class KnnTfg {
 	}
 	
 	public static void infoCuantitativo(Dataset data) {
-		print("[1] Mostrar nombre ");
-		print("[2] Mostrar media ");
-		print("[3] Mostrar maximo");
-		print("[4] Mostrar minimo");
-		print("[5] Mostrar desviación tipica");
+		String[] opcionesCuantitativo = {
+				"[1] Mostrar nombre",
+				"[2] Mostrar media",
+				"[3] Mostrar máximo",
+				"[4] Mostrar mínimo",
+				"[5] Mostrar desviación típica"};
+		print(opcionesCuantitativo);
 		int opcion = 1;
 		Scanner scanner = new Scanner(System.in);
 		opcion = scanner.nextInt();
@@ -366,10 +375,12 @@ public class KnnTfg {
 	}
 	
 	public static void infoCualitativo(Dataset data) {
-		print("[1] Mostrar nombre ");
-		print("[2] Mostrar número de clases ");
-		print("[3] Mostrar clases");
-		print("[4] Mostrar frecuencia");
+		String[] opcionesCualitativo = {
+				"[1] Mostrar nombre",
+				"[2] Mostrar número de clases",
+				"[3] Mostrar clases",
+				"[4] Mostrar frecuencia"};
+		print(opcionesCualitativo);
 		int opcion = 1;
 		Scanner scanner = new Scanner(System.in);
 		opcion = scanner.nextInt();
@@ -427,12 +438,13 @@ public class KnnTfg {
 		Scanner scanner = new Scanner(System.in);
 		Entrenamiento nuevo = new Entrenamiento();
 		while (opcion != 5) {
-			print("Seleccione una opción de experimentación: ");
-			print("[1] Generacion experimentación normal");
-			print("[2] Generacion experimentación aleatoria");
-			print("[3] Guardar Dataset ");
-			print("[4] Cargar Dataset ");
-			print("[5] Salir");
+			String[] opcionesExperimentacion = {
+					"[1] Generación experimentación normal",
+					"[2] Generación experimentación aleatoria",
+					"[3] Guardar Dataset",
+					"[4] Cargar Dataset",
+					"[5] Salir"};
+			print(opcionesExperimentacion);
 			opcion = scanner.nextInt();
 			switch(opcion) {
 			case(1):
@@ -478,8 +490,10 @@ public class KnnTfg {
 	}
 	
 	public static Entrenamiento experimentacionAleatoria(Dataset datos) {
-		print("[1] Semilla(Seed) por defecto");
-		print("[2] Semilla(Seed) manual");
+		String[] opcionesExperimentacion = {
+				"[1] Semilla(Seed) por defecto",
+				"[2] Semilla(Seed) manual"};
+		print(opcionesExperimentacion);
 		int opcion = 1;
 		Scanner scanner = new Scanner(System.in);
 		opcion = scanner.nextInt();
@@ -527,6 +541,16 @@ public class KnnTfg {
 		}
 		if (Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
 			print(cadena);
+		}
+	}
+
+	public static void print(String[] lista) {
+		if (lista == null || lista.length == 0) {
+			print("No hay elementos para mostrar.");
+			return;
+		}
+		for (String elemento : lista) {
+			print(elemento);
 		}
 	}
 }
