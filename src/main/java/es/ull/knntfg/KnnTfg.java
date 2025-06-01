@@ -43,7 +43,10 @@ public class KnnTfg {
 		switch(opcion) {
 			case(1):
 				archivo = readFile(ruta);
-				Logger.getLogger(KNN_TFG).info("Cargando el dataset: " + archivo);
+				Logger.getLogger(KNN_TFG).info("Cargando el dataset: ");
+				if(Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
+					Logger.getLogger(KNN_TFG).info(archivo);
+				}
 				datosCrudos = new Dataset(ruta+archivo);
 				datos = new Dataset(ruta+archivo);
 				datos = preprocesar(datos);
@@ -65,7 +68,7 @@ public class KnnTfg {
 				experimentar(datos);
 				break;
 			case(7):
-				Logger.getLogger(KNN_TFG).info("Introduce el valor de k aquí: ");
+				Logger.getLogger(KNN_TFG).info("Añada el valor de k aquí: ");
 				int k = scanner.nextInt();
 				KNN intento = new KNN(k);
 				String valoresString = "";
@@ -110,7 +113,7 @@ public class KnnTfg {
 			opcion = scanner.nextInt();
 			switch(opcion) {
 			case(1):
-				Logger.getLogger(KNN_TFG).info("Introduzca el nombre del archivo: ");
+				Logger.getLogger(KNN_TFG).info("Agregue el nombre del archivo: ");
 				Scanner scanner1 = new Scanner(System.in);
 				archivo = scanner1.nextLine();
 				break;
@@ -144,7 +147,7 @@ public class KnnTfg {
 			switch(opcion) {
 			case(1):
 				valores = "";
-				Logger.getLogger(KNN_TFG).info("Introduce los valores: ");
+				Logger.getLogger(KNN_TFG).info("Proporcione los valores: ");
 				Scanner scanner1 = new Scanner(System.in);
 				valores = scanner1.nextLine();
 				String[] subcadenas = valores.split(",");
@@ -281,7 +284,7 @@ public class KnnTfg {
 			break;
 		case(2):
 			int valor = 0;
-			Logger.getLogger(KNN_TFG).info("Introduce el indice de la instancia a mostrar: ");
+			Logger.getLogger(KNN_TFG).info("Agregue el indice de la instancia a mostrar: ");
 			Scanner scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			Logger.getLogger(KNN_TFG).info("Mostrando instancia: ");
@@ -326,7 +329,7 @@ public class KnnTfg {
 			break;
 		case(2):
 			valor = 0;
-			Logger.getLogger(KNN_TFG).info("Introduce el indice del atributo: ");
+			Logger.getLogger(KNN_TFG).info("Incorpore el indice del atributo: ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			auxiliar = (Cuantitativo) data.get(valor);
@@ -392,7 +395,7 @@ public class KnnTfg {
 		switch(opcion) {
 		case(1):
 			int valor = 0;
-			Logger.getLogger(KNN_TFG).info("Introduce un indice: ");
+			Logger.getLogger(KNN_TFG).info("Incorpore un indice: ");
 			Scanner scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			try {
@@ -405,7 +408,7 @@ public class KnnTfg {
 			break;
 		case(2):
 			valor = 0;
-			Logger.getLogger(KNN_TFG).info("Introduce un indice a mostrar: ");
+			Logger.getLogger(KNN_TFG).info("Inserte un indice a mostrar: ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			Cualitativo auxiliar = (Cualitativo) data.get(valor);
@@ -472,7 +475,7 @@ public class KnnTfg {
 				nuevo = experimentacionAleatoria(datos);
 				break;
 			case(3):
-				Logger.getLogger(KNN_TFG).info("Introduzca el nombre para el archivo de entrenamiento: ");
+				Logger.getLogger(KNN_TFG).info("Inserte el nombre para el archivo de entrenamiento: ");
 				scanner1 = new Scanner(System.in);
 				String archivo1 = scanner1.nextLine();
 				Logger.getLogger(KNN_TFG).info("Introduzca el nombre para el archivo de pruebas: ");
@@ -484,11 +487,11 @@ public class KnnTfg {
 				Logger.getLogger(KNN_TFG).info("Introduzca el nombre del archivo de entrenamiento: ");
 				scanner1 = new Scanner(System.in);
 				archivo1 = scanner1.nextLine();
-				Logger.getLogger(KNN_TFG).info("Introduzca el nombre del archivo de pruebas: ");
+				Logger.getLogger(KNN_TFG).info("Inserte el nombre del archivo de pruebas: ");
 				scanner1 = new Scanner(System.in);
 				archivo2 = scanner1.nextLine();
 				nuevo.read(archivo1, archivo2);
-				Logger.getLogger(KNN_TFG).info("Introduce el valor de k: ");
+				Logger.getLogger(KNN_TFG).info("Proporcione  el valor de k: ");
 				k = scanner.nextInt();
 				nuevo.generarPrediccion(k);
 				nuevo.generarMatriz(k);
