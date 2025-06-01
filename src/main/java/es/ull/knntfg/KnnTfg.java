@@ -23,7 +23,7 @@ public class KnnTfg {
 					"[2] Guardar dataset",
 					"[3] Modificar dataset",
 					"[4] Información del dataset",
-					"[5] Salir",
+					"[5] Salir del programa",
 					"[6] Experimentación",
 					"[7] Clasificación con KNN"};
 			print(opciones);
@@ -102,7 +102,7 @@ public class KnnTfg {
 					"[1] Introducir nombre del archivo",
 					"[2] Mostrar ruta actual",
 					"[3] Cambiar ruta",
-					"[4] Salir"};
+					"[4] Salir de la selección de archivo"};
 			print(opcionesRead);
 			Scanner scanner = new Scanner(System.in);
 			opcion = scanner.nextInt();
@@ -136,7 +136,7 @@ public class KnnTfg {
 					"[2] Eliminar instancia",
 					"[3] Modificar instancia",
 					"[4] Cambiar peso de los atributos",
-					"[5] Salir"};
+					"[5] Salir de la modificación"};
 			print(opcionesModify);
 			Scanner scanner = new Scanner(System.in);
 			opcion = scanner.nextInt();
@@ -191,7 +191,7 @@ public class KnnTfg {
 				"[1] Datos crudos",
 				"[2] Rango 0-1 (por defecto)",
 				"[3] Estandarización",
-				"[4] Salir"};
+				"[4] Salir de la selección de preprocesado"};
 		print(opcionesPreprocesado);
 		int opcion = 1;
 		Scanner scanner = new Scanner(System.in);
@@ -227,7 +227,7 @@ public class KnnTfg {
 				"[1] Asignar pesos distintos a todos los atributos",
 				"[2] Mismo peso para todos los atributos (por defecto)",
 				"[3] Cambiar peso de un atributo",
-				"[4] Salir"};
+				"[4] Salir de la selección de pesos"};
 		print(opcionesPesos);
 		int opcion = 1;
 		Scanner scanner = new Scanner(System.in);
@@ -443,7 +443,7 @@ public class KnnTfg {
 					"[2] Generación experimentación aleatoria",
 					"[3] Guardar Dataset",
 					"[4] Cargar Dataset",
-					"[5] Salir"};
+					"[5] Salir de la experimentación"};
 			print(opcionesExperimentacion);
 			opcion = scanner.nextInt();
 			switch(opcion) {
