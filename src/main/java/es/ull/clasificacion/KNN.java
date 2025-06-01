@@ -45,15 +45,6 @@ public class KNN {
 			  
   }
   
-  public double getDistanciaEuclidea(Vector vieja, Vector nueva) {
-	if (vieja.size() == nueva.size()) return Double.MAX_VALUE;
-	double dist = 0.0;
-	for(int i = 0; i < nueva.size(); i++) {
-		dist += Math.pow((vieja.get(i) - nueva.get(i)), 2);
-	}
-	return Math.sqrt(dist);
-  }
-  
   public double getDistanciaEuclidea(Vector vieja, Vector nueva, List<Double> pesos) {
 		if (vieja.size() == nueva.size()) return Double.MAX_VALUE;
 		double dist = 0.0;

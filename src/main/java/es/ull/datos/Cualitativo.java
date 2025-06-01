@@ -84,11 +84,6 @@ public class Cualitativo extends Atributo{
 	}
 	
 	@Override
-	public void clear() {
-		valores.clear();
-	}
-	
-	@Override
 	public Cualitativo clonar() {
 		return new Cualitativo(this.nombre, new ArrayList<String>(this.valores));
 	}

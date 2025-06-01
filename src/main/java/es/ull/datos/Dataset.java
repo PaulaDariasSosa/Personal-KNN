@@ -122,6 +122,9 @@ public class Dataset {
     }
 	
 	public void read(String filename) throws IOException {
+		if (filename == null || filename.isEmpty()) {
+			throw new IllegalArgumentException("El nombre del archivo no puede ser nulo o vacío");
+		}
 		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             // Leer la primera línea para obtener los nombres de los atributos
 			// llamar al constructor vacio
@@ -150,6 +153,9 @@ public class Dataset {
             	}
             }
         }
+		if (atributos.isEmpty()) {
+			throw new IOException("El archivo está vacío o no contiene datos válidos.");
+		}
 	}
 
 	// numero atributos

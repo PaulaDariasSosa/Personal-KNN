@@ -9,10 +9,6 @@ import vectores.Vector;
 public class Instancia {
 	private List<Object> valores;
 	
-	public Instancia(){
-		this.valores = new ArrayList<Object>();
-	}
-	
 	public Instancia(List<Object> nuevos){
 		this.valores = nuevos;
 	}
@@ -45,39 +41,6 @@ public class Instancia {
 	
 	public String getClase() {
 		return (String) this.valores.get(valores.size()-1);
-	}
-	
-	public void normalizar() {
-		Vector aux = this.getVector();
-		aux.normalize();
-		ArrayList<Object> arrayListObject = new ArrayList<>();
-        for (Double d : aux.getValores()) {
-            arrayListObject.add(d); // La conversión automática de tipos se encarga de convertir Double a Object
-        }
-		this.valores = arrayListObject;
-	}
-	
-	public void estandarizar() {
-		Vector aux = this.getVector();
-		double media = 0.0;
-		for(int i = 0; i < aux.size(); ++i) {
-			media += aux.get(i);
-		}
-		media =  media/aux.size(); 
-		double auxiliar = 0;
-		for(int i = 0; i < aux.size(); ++i) {
-			auxiliar += (aux.get(i) - media) * (aux.get(i) - media);
-		}
-		auxiliar /= this.valores.size();
-		double desviacion = Math.sqrt(auxiliar);
-		for (int i = 0; i < aux.size(); ++i) {
-			aux.set(i, (aux.get(i)-media)/desviacion);
-		}
-		ArrayList<Object> arrayListObject = new ArrayList<>();
-        for (Double d : aux.getValores()) {
-            arrayListObject.add(d); // La conversión automática de tipos se encarga de convertir Double a Object
-        }
-		this.valores = arrayListObject;
 	}
 	
 	public void deleteClase() {

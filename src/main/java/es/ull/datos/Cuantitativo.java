@@ -37,7 +37,7 @@ public class Cuantitativo extends Atributo{
 	}
 	
 	public double minimo() {
-		double minimo = this.valores.get(0);
+		double minimo = Integer.MAX_VALUE;
 		for(int i = 0; i < this.valores.size(); ++i) {
 			if(minimo > this.valores.get(i)) minimo = this.valores.get(i);
 		}
@@ -45,7 +45,7 @@ public class Cuantitativo extends Atributo{
 	}
 	
 	public double maximo() {
-		double maximo = this.valores.get(0);
+		double maximo = Integer.MIN_VALUE;
 		for(int i = 0; i < this.valores.size(); ++i) {
 			if(maximo < this.valores.get(i)) maximo = this.valores.get(i);
 		}
@@ -53,7 +53,7 @@ public class Cuantitativo extends Atributo{
 	}
 	
 	public double media() {
-		double media = this.valores.get(0);
+		double media = 0;
 		for(int i = 0; i < this.valores.size(); ++i) {
 			media += this.valores.get(i);
 		}
@@ -102,11 +102,6 @@ public class Cuantitativo extends Atributo{
 	public String toString() {
 		return valores.toString();
 		
-	}
-	
-	@Override
-	public void clear() {
-		valores.clear();
 	}
 	
 	@Override

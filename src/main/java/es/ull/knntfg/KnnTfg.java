@@ -43,6 +43,7 @@ public class KnnTfg {
 		switch(opcion) {
 			case(1):
 				archivo = readFile(ruta);
+				Logger.getLogger(KNN_TFG).info("Cargando el dataset: " + archivo);
 				datosCrudos = new Dataset(ruta+archivo);
 				datos = new Dataset(ruta+archivo);
 				datos = preprocesar(datos);
@@ -58,6 +59,7 @@ public class KnnTfg {
 				info(datos);
 				break;
 			case(5):
+				Logger.getLogger(KNN_TFG).info("Saliendo del programa.");
 				return true;
 			case(6):
 				experimentar(datos);
@@ -121,7 +123,7 @@ public class KnnTfg {
 				ruta = scanner2.nextLine();
 				break;
 			default:
-				Logger.getLogger(KNN_TFG).info("Por defecto");
+				Logger.getLogger(KNN_TFG).info("Saliendo de la selección de archivo.");
 			}
 		}
 		return archivo;
@@ -148,6 +150,7 @@ public class KnnTfg {
 				String[] subcadenas = valores.split(",");
 				ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(subcadenas));
 				data.add(arrayList);
+				Logger.getLogger(KNN_TFG).info("Instancia añadida correctamente.");
 				return data;
 			case(2):
 				int valor = 0;
@@ -155,6 +158,7 @@ public class KnnTfg {
 				scanner1 = new Scanner(System.in);
 				valor = scanner1.nextInt();
 				data.delete(valor);
+				Logger.getLogger(KNN_TFG).info("Instancia eliminada correctamente.");
 				return data;
 			case(3):
 				valores = "";
@@ -169,6 +173,7 @@ public class KnnTfg {
 				scanner1 = new Scanner(System.in);
 				valor = scanner1.nextInt();
 				data.delete(valor);
+				Logger.getLogger(KNN_TFG).info("Instancia modificada correctamente.");
 				return data;
 			case(4):
 				data = cambiarPesos(data);
@@ -194,19 +199,23 @@ public class KnnTfg {
 		switch(opcion) {
 		case(1):
 			data.setPreprocesado(1);
+			Logger.getLogger(KNN_TFG).info("Datos crudos seleccionados, no se aplicará preprocesado.");
 			return data;
 		case(2):
 			Normalizacion intento1 = new Normalizacion();
 			data = new Dataset (intento1.procesar(data));
 			data.setPreprocesado(2);
+			Logger.getLogger(KNN_TFG).info("Normalización seleccionada, datos normalizados al rango 0-1.");
 			break;
 		case(3):
 			Estandarizacion intento2 = new Estandarizacion();
 			data = new Dataset (intento2.procesar(data));
+			Logger.getLogger(KNN_TFG).info("Estandarización seleccionada, datos estandarizados.");
 			data.setPreprocesado(3);
 			break;
 		default:
 			intento1 = new Normalizacion();
+			Logger.getLogger(KNN_TFG).info("Por defecto, se aplicará normalización al rango 0-1.");
 			data = new Dataset (intento1.procesar(data));
 			data.setPreprocesado(2);
 		}
@@ -230,12 +239,14 @@ public class KnnTfg {
 			String[] subcadenas = valores.split(",");
 			ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(subcadenas));
 			data.cambiarPeso(arrayList);
+			Logger.getLogger(KNN_TFG).info("Pesos asignados correctamente.");
 			return data;
 		case(2):
 			double valoresD = 1.0;
 			scanner1 = new Scanner(System.in);
 			valoresD = scanner1.nextDouble();
 			data.cambiarPeso(valoresD);
+			Logger.getLogger(KNN_TFG).info("Peso asignado correctamente a todos los atributos.");
 			return data;
 		case(3):
 			int valorI = 0;
@@ -246,6 +257,7 @@ public class KnnTfg {
 			valoresD = 1.0;
 			valoresD = scanner1.nextDouble();
 			data.cambiarPeso(valorI, valoresD);
+			Logger.getLogger(KNN_TFG).info("Peso asignado correctamente al atributo ");
 			return data;
 		default:
 			break;
@@ -269,6 +281,7 @@ public class KnnTfg {
 			break;
 		case(2):
 			int valor = 0;
+			Logger.getLogger(KNN_TFG).info("Introduce el indice de la instancia a mostrar: ");
 			Scanner scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			Logger.getLogger(KNN_TFG).info("Mostrando instancia: ");
@@ -305,6 +318,7 @@ public class KnnTfg {
 		switch(opcion) {
 		case(1):
 			int valor = 0;
+			Logger.getLogger(KNN_TFG).info("Introduce el indice del atributo: ");
 			Scanner scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			Cuantitativo auxiliar = (Cuantitativo) data.get(valor);
@@ -312,6 +326,7 @@ public class KnnTfg {
 			break;
 		case(2):
 			valor = 0;
+			Logger.getLogger(KNN_TFG).info("Introduce el indice del atributo: ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			auxiliar = (Cuantitativo) data.get(valor);
@@ -324,6 +339,7 @@ public class KnnTfg {
 			break;
 		case(3):
 			valor = 0;
+			Logger.getLogger(KNN_TFG).info("Introduce el indice: ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			auxiliar = (Cuantitativo) data.get(valor);
@@ -336,6 +352,7 @@ public class KnnTfg {
 			break;
 		case(4):
 			valor = 0;
+			Logger.getLogger(KNN_TFG).info("Introduce el indice: ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			auxiliar = (Cuantitativo) data.get(valor);
@@ -348,6 +365,7 @@ public class KnnTfg {
 			break;
 		case(5):
 			valor = 0;
+			Logger.getLogger(KNN_TFG).info("Introduce un indice: ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			auxiliar = (Cuantitativo) data.get(valor);
@@ -374,6 +392,7 @@ public class KnnTfg {
 		switch(opcion) {
 		case(1):
 			int valor = 0;
+			Logger.getLogger(KNN_TFG).info("Introduce un indice: ");
 			Scanner scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			try {
@@ -386,6 +405,7 @@ public class KnnTfg {
 			break;
 		case(2):
 			valor = 0;
+			Logger.getLogger(KNN_TFG).info("Introduce un indice a mostrar: ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			Cualitativo auxiliar = (Cualitativo) data.get(valor);
@@ -398,6 +418,7 @@ public class KnnTfg {
 			break;
 		case(3):
 			valor = 0;
+			Logger.getLogger(KNN_TFG).info("Introduce un indice a mostrar: ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			auxiliar = (Cualitativo) data.get(valor);
@@ -408,6 +429,7 @@ public class KnnTfg {
 			break;
 		case(4):
 			valor = 0;
+			Logger.getLogger(KNN_TFG).info("Introduce un indice del atributo a mostrar : ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			auxiliar = (Cualitativo) data.get(valor);
