@@ -110,7 +110,7 @@ public class Cuantitativo extends Atributo{
 	}
 	
 	@Override
-	public Cuantitativo clone() {
-		return new Cuantitativo(new String (this.nombre), this.valores.clone());
+	public Cuantitativo clonar() {
+		return new Cuantitativo(this.nombre, this.valores.clonar());
 	}
 }

@@ -3,6 +3,7 @@ package knntfg;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -12,7 +13,7 @@ import procesamiento.*;
 import entrenamiento.*;
 
 public class KnnTfg {
-	static String KNNTFG = "knntfg";
+	static final String KNNTFG = "knntfg";
 
 	public static void main(String[] args) throws IOException {
 		String ruta = "";
@@ -69,16 +70,16 @@ public class KnnTfg {
 				String[] subcadenas = valoresString.split(",");
 				ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(subcadenas));
 				Instancia instance = new Instancia (valoresString);
-				Dataset copiaCrudos = new Dataset(datosCrudos.clone());
+				Dataset copiaCrudos = new Dataset(datosCrudos.clonar());
 				if (datos.getPreprocesado() != 1) {
 					arrayList.add("clase");
 					copiaCrudos.add(arrayList);
 					Preprocesado intento1 = new Normalizacion();
 					if (datos.getPreprocesado() == 2) intento1 = new Normalizacion();
 					if (datos.getPreprocesado() == 3) intento1 = new Estandarizacion();
-					copiaCrudos = new Dataset (intento1.Procesar(copiaCrudos));
-					instance = copiaCrudos.getInstance(copiaCrudos.NumeroCasos()-1);
-					copiaCrudos.delete(copiaCrudos.NumeroCasos()-1);
+					copiaCrudos = new Dataset (intento1.procesar(copiaCrudos));
+					instance = copiaCrudos.getInstance(copiaCrudos.numeroCasos()-1);
+					copiaCrudos.delete(copiaCrudos.numeroCasos()-1);
 					instance.deleteClase();
 				}
 				Logger.getLogger(KNNTFG).info("La clase elegida es: ");
@@ -192,17 +193,17 @@ public class KnnTfg {
 			return data;
 		case(2):
 			Normalizacion intento1 = new Normalizacion();
-			data = new Dataset (intento1.Procesar(data));
+			data = new Dataset (intento1.procesar(data));
 			data.setPreprocesado(2);
 			break;
 		case(3):
 			Estandarizacion intento2 = new Estandarizacion();
-			data = new Dataset (intento2.Procesar(data));
+			data = new Dataset (intento2.procesar(data));
 			data.setPreprocesado(3);
 			break;
 		default:
 			intento1 = new Normalizacion();
-			data = new Dataset (intento1.Procesar(data));
+			data = new Dataset (intento1.procesar(data));
 			data.setPreprocesado(2);
 		}
 		return data;
@@ -224,13 +225,13 @@ public class KnnTfg {
 			valores = scanner1.nextLine();
 			String[] subcadenas = valores.split(",");
 			ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(subcadenas));
-			data.CambiarPeso(arrayList);
+			data.cambiarPeso(arrayList);
 			return data;
 		case(2):
 			double valoresD = 1.0;
 			scanner1 = new Scanner(System.in);
 			valoresD = scanner1.nextDouble();
-			data.CambiarPeso(valoresD);
+			data.cambiarPeso(valoresD);
 			return data;
 		case(3):
 			int valorI = 0;
@@ -240,7 +241,7 @@ public class KnnTfg {
 			Logger.getLogger(KNNTFG).info("Peso para asignar(Debe estar entre 0 y 1): ");
 			valoresD = 1.0;
 			valoresD = scanner1.nextDouble();
-			data.CambiarPeso(valorI, valoresD);
+			data.cambiarPeso(valorI, valoresD);
 			return data;
 		default:
 			break;
@@ -391,7 +392,7 @@ public class KnnTfg {
 			valor = scanner1.nextInt();
 			auxiliar = (Cualitativo) data.get(valor);
 			Logger.getLogger(KNNTFG).info("Mostrando frecuencia: ");
-			ArrayList<Double> frecuencia = auxiliar.frecuencia();
+			List<Double> frecuencia = auxiliar.frecuencia();
 			Logger.getLogger(KNNTFG).info(frecuencia.toString());
 			break;
 		default:

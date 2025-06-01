@@ -7,10 +7,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Vector {
-	private ArrayList<Double> coef;
+	private List<Double> coef;
 
     /**
      * Constructor vacio
@@ -34,7 +36,7 @@ public class Vector {
      * Constructor que recibe un ArrayList de double
      * @param coef
      */
-    public Vector(ArrayList<Double> coef) {
+    public Vector(List<Double> coef) {
     	this.coef = new ArrayList<>(coef);
     }
     
@@ -86,7 +88,7 @@ public class Vector {
      * Método para clonar un vector
      * @return la copia del vector original
      */
-    public Vector clone() {
+    public Vector clonar() {
         return new Vector(new ArrayList<Double> (this.coef));
     }
     
@@ -108,7 +110,7 @@ public class Vector {
     }
 
     public void print() {
-        System.out.println(this.toString());
+        Logger.getGlobal().info(this.toString());
     }
 
     public double get(int index) {
@@ -278,7 +280,7 @@ public class Vector {
         }
     }
     
-    public ArrayList<Double> getValores() {
+    public List<Double> getValores() {
         return this.coef;
     }
 }
