@@ -15,17 +15,17 @@ public class KnnTfg {
 	static Dataset datos = new Dataset();
 
 	public static void main(String[] args) throws IOException {
-		Logger.getLogger("Iniciando el programa");
+		print("Iniciando el programa");
 		boolean salida = false;
 		while(!salida) {
 			Logger.getLogger("Seleccione una opción: ");
-			Logger.getLogger("[1] Cargar un dataset ");
-			Logger.getLogger("[2] Guardar un dataset ");
-			Logger.getLogger("[3] Modificar un dataset ");
-			Logger.getLogger("[4] Mostrar información ");
-			Logger.getLogger("[5] Salir del programa ");
-			Logger.getLogger("[6] Realizar experimentación ");
-			Logger.getLogger("[7] Algoritmo KNN para una instancia ");
+			print("[1] Cargar un dataset ");
+			print("[2] Guardar un dataset ");
+			print("[3] Modificar un dataset ");
+			print("[4] Mostrar información ");
+			print("[5] Salir del programa ");
+			print("[6] Realizar experimentación ");
+			print("[7] Algoritmo KNN para una instancia ");
 			int opcion = 1;
 			Scanner scanner = new Scanner(System.in);
 			opcion = scanner.nextInt();
@@ -40,10 +40,8 @@ public class KnnTfg {
 		switch(opcion) {
 			case(1):
 				archivo = readFile(ruta);
-				Logger.getLogger("Cargando el dataset: ");
-				if(Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
-					Logger.getLogger(KNN_TFG).info(archivo);
-				}
+				print("Cargando el dataset: ");
+				checkLogger(archivo);
 				datosCrudos = new Dataset(ruta+archivo);
 				datos = new Dataset(ruta+archivo);
 				datos = preprocesar(datos);
@@ -59,17 +57,17 @@ public class KnnTfg {
 				info(datos);
 				break;
 			case(5):
-				Logger.getLogger("Saliendo del programa.");
+				print("Saliendo del programa.");
 				return true;
 			case(6):
 				experimentar(datos);
 				break;
 			case(7):
-				Logger.getLogger("Añada el valor de k aquí: ");
+				print("Añada el valor de k aquí: ");
 				int k = scanner.nextInt();
 				KNN intento = new KNN(k);
 				String valoresString = "";
-				Logger.getLogger("Introduce los valores, por favor: ");
+				print("Introduce los valores, por favor: ");
 				Scanner scanner1 = new Scanner(System.in);
 				valoresString = scanner1.nextLine();
 				String[] subcadenas = valoresString.split(",");
@@ -87,10 +85,8 @@ public class KnnTfg {
 					copiaCrudos.delete(copiaCrudos.numeroCasos()-1);
 					instance.deleteClase();
 				}
-				Logger.getLogger("La clase elegida es: ");
-				if(Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
-					Logger.getLogger(KNN_TFG).info(intento.clasificar(copiaCrudos, instance));
-				}
+				print("La clase elegida es: ");
+				checkLogger(intento.clasificar(copiaCrudos, instance));
 				break;
 			default:
 		}
@@ -237,7 +233,7 @@ public class KnnTfg {
 			Scanner scanner1 = new Scanner(System.in);
 			valores = scanner1.nextLine();
 			String[] subcadenas = valores.split(",");
-			ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(subcadenas));
+			ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(subcadenas));
 			data.cambiarPeso(arrayList);
 			print("Pesos asignados correctamente.");
 			return data;
@@ -285,9 +281,7 @@ public class KnnTfg {
 			Scanner scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
 			print("Mostrando instancia: ");
-			if(Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
-				Logger.getLogger(KNN_TFG).info(data.getInstance(valor).toString());
-			}
+			checkLogger(data.getInstance(valor).toString());
 			break;
 		case(3):
 			infoCuantitativo(data);
@@ -297,9 +291,7 @@ public class KnnTfg {
 			break;
 		case(5):
 			print("Mostrando pesos de los atributos: ");
-			if(Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
-				Logger.getLogger(KNN_TFG).info(data.getPesos().toString());
-			}
+			checkLogger(data.getPesos().toString());
 			break;
 		default:
 			break;
@@ -333,9 +325,7 @@ public class KnnTfg {
 			print("Mostrando media: ");
 			ArrayList<Double> media = new ArrayList<>();
 			media.add(auxiliar.media());
-			if(Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
-				Logger.getLogger(KNN_TFG).info(media.toString());
-			}
+			checkLogger(media.toString());
 			break;
 		case(3):
 			valor = 0;
@@ -346,9 +336,7 @@ public class KnnTfg {
 			ArrayList<Double> maximo = new ArrayList<>();
 			maximo.add(auxiliar.maximo());
 			print("Mostrando máximo: ");
-			if(Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
-				Logger.getLogger(KNN_TFG).info(maximo.toString());
-			}
+			checkLogger(maximo.toString());
 			break;
 		case(4):
 			valor = 0;
@@ -359,9 +347,7 @@ public class KnnTfg {
 			print("Mostrando mínimo: ");
 			ArrayList<Double> minimo = new ArrayList<>();
 			minimo.add(auxiliar.minimo());
-			if(Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
-				Logger.getLogger(KNN_TFG).info(minimo.toString());
-			}
+			checkLogger(minimo.toString());
 			break;
 		case(5):
 			valor = 0;
@@ -372,9 +358,7 @@ public class KnnTfg {
 			print("Mostrando desviación tipica: ");
 			ArrayList<Double> desviacion = new ArrayList<>();
 			desviacion.add(auxiliar.desviacion());
-			if(Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
-				Logger.getLogger(KNN_TFG).info(desviacion.toString());
-			}
+			checkLogger(desviacion.toString());
 			break;
 		default:
 			break;
@@ -412,9 +396,7 @@ public class KnnTfg {
 			print("Mostrando número de clases: ");
 			ArrayList<Integer> nClases = new ArrayList<>();
 			nClases.add(auxiliar.nClases());
-			if(Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
-				Logger.getLogger(KNN_TFG).info(nClases.toString());
-			}
+			checkLogger(nClases.toString());
 			break;
 		case(3):
 			valor = 0;
@@ -423,9 +405,7 @@ public class KnnTfg {
 			valor = scanner1.nextInt();
 			auxiliar = (Cualitativo) data.get(valor);
 			print("Mostrando clases: ");
-			if(Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
-				Logger.getLogger(KNN_TFG).info(auxiliar.clases().toString());
-			}
+			checkLogger(auxiliar.clases().toString());
 			break;
 		case(4):
 			valor = 0;
@@ -435,9 +415,7 @@ public class KnnTfg {
 			auxiliar = (Cualitativo) data.get(valor);
 			print("Mostrando frecuencia: ");
 			List<Double> frecuencia = auxiliar.frecuencia();
-			if(Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
-				Logger.getLogger(KNN_TFG).info(frecuencia.toString());
-			}
+			checkLogger(frecuencia.toString());
 			break;
 		default:
 			break;
@@ -540,6 +518,16 @@ public class KnnTfg {
 
 	public static void print(String mensaje) {
 		Logger.getLogger(KNN_TFG).info(mensaje);
+	}
+
+	public static void checkLogger(String cadena) {
+		if (cadena == null || cadena.isEmpty()) {
+			print("No se ha introducido un nombre de archivo válido.");
+			return;
+		}
+		if (Logger.getLogger(KNN_TFG).isLoggable(java.util.logging.Level.INFO)) {
+			print(cadena);
+		}
 	}
 }
 
