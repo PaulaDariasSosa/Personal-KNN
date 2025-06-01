@@ -14,14 +14,12 @@ import entrenamiento.*;
 
 public class KnnTfg {
 	static final String KNN_TFG = "knntfg";
+	static Dataset datosCrudos = new Dataset();
+	static Dataset datos = new Dataset();
 
 	public static void main(String[] args) throws IOException {
-		String ruta = "";
 		Logger.getLogger(KNN_TFG).info("Iniciando el programa");
 		boolean salida = false;
-		Dataset datosCrudos = new Dataset();
-		Dataset datos = new Dataset();
-		String archivo;
 		while(!salida) {
 			Logger.getLogger(KNN_TFG).info("Seleccione una opción: ");
 			Logger.getLogger(KNN_TFG).info("[1] Cargar un dataset ");
@@ -34,7 +32,15 @@ public class KnnTfg {
 			int opcion = 1;
 			Scanner scanner = new Scanner(System.in);
 			opcion = scanner.nextInt();
-			switch(opcion) {
+			salida = opciones(opcion);
+		}
+    }
+
+	public static boolean opciones(Integer opcion) throws IOException {
+		String ruta = "";
+		String archivo = "";
+		Scanner scanner = new Scanner(System.in);
+		switch(opcion) {
 			case(1):
 				archivo = readFile(ruta);
 				datosCrudos = new Dataset(ruta+archivo);
@@ -52,8 +58,7 @@ public class KnnTfg {
 				info(datos);
 				break;
 			case(5):
-				salida = true;
-				break;
+				return true;
 			case(6):
 				experimentar(datos);
 				break;
@@ -86,9 +91,9 @@ public class KnnTfg {
 				}
 				break;
 			default:
-			}
 		}
-    }
+		return false;
+	}
 	
 	public static String readFile(String ruta) {
 		int opcion = 2;
