@@ -1,7 +1,5 @@
 package vectores;
 
-import entrenamiento.Entrenamiento;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -112,7 +110,7 @@ public class Vector {
     }
 
     public void print() {
-        if(!Logger.getGlobal().isLoggable(java.util.logging.Level.INFO)) {
+        if(Logger.getGlobal().isLoggable(java.util.logging.Level.INFO)) {
             Logger.getGlobal().info(this.toString());
         }
     }
