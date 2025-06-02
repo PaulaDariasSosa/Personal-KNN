@@ -75,8 +75,10 @@ public class Cuantitativo extends Atributo{
 	}
 	
 	public void estandarizacion() {
+		double desviacion = this.desviacion();
+		double media = this.media();
 		for (int i = 0; i < valores.size(); ++i) {
-			valores.set(i, (valores.get(i)-this.media())/this.desviacion());
+			valores.set(i, (valores.get(i)-media)/desviacion);
 		}
 	}
 

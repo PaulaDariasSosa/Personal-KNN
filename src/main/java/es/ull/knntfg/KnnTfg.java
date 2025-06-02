@@ -140,12 +140,11 @@ public class KnnTfg {
 			print(opcionesModify);
 			Scanner scanner = new Scanner(System.in);
 			opcion = scanner.nextInt();
+			scanner.nextLine();
 			switch(opcion) {
 			case(1):
-				valores = "";
 				print("Proporcione los valores: ");
-				Scanner scanner1 = new Scanner(System.in);
-				valores = scanner1.nextLine();
+				valores = scanner.nextLine();
 				String[] subcadenas = valores.split(",");
 				ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(subcadenas));
 				data.add(arrayList);
@@ -154,23 +153,18 @@ public class KnnTfg {
 			case(2):
 				int valor = 0;
 				print("Introduce el indice a eliminar: ");
-				scanner1 = new Scanner(System.in);
-				valor = scanner1.nextInt();
+				valor = scanner.nextInt();
 				data.delete(valor);
 				print("Instancia eliminada correctamente.");
 				return data;
 			case(3):
-				valores = "";
 				print("Introduce los valores: ");
-				scanner1 = new Scanner(System.in);
-				valores = scanner1.nextLine();
+				valores = scanner.nextLine();
 				subcadenas = valores.split(",");
 				arrayList = new ArrayList<>(Arrays.asList(subcadenas));
 				data.add(arrayList);
-				valor = 0;
 				print(("Introduce el indice a eliminar: "));
-				scanner1 = new Scanner(System.in);
-				valor = scanner1.nextInt();
+				valor = scanner.nextInt();
 				data.delete(valor);
 				print("Instancia modificada correctamente.");
 				return data;
@@ -236,8 +230,7 @@ public class KnnTfg {
 		switch(opcion) {
 		case(1):
 			String valores = "";
-			Scanner scanner1 = new Scanner(System.in);
-			valores = scanner1.nextLine();
+			valores = scanner.nextLine();
 			String[] subcadenas = valores.split(",");
 			ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(subcadenas));
 			data.cambiarPeso(arrayList);
@@ -245,19 +238,16 @@ public class KnnTfg {
 			return data;
 		case(2):
 			double valoresD = 1.0;
-			scanner1 = new Scanner(System.in);
-			valoresD = scanner1.nextDouble();
+			valoresD = scanner.nextDouble();
 			data.cambiarPeso(valoresD);
 			print("Peso asignado correctamente a todos los atributos.");
 			return data;
 		case(3):
 			int valorI = 0;
 			print("Introduce el indice del atributo a modificar: ");
-			scanner1 = new Scanner(System.in);
-			valorI = scanner1.nextInt();
+			valorI = scanner.nextInt();
 			print("Peso para asignar(Debe estar entre 0 y 1): ");
-			valoresD = 1.0;
-			valoresD = scanner1.nextDouble();
+			valoresD = scanner.nextDouble();
 			data.cambiarPeso(valorI, valoresD);
 			print("Peso asignado correctamente al atributo ");
 			return data;
@@ -326,7 +316,6 @@ public class KnnTfg {
 			print("Mostrando nombre: " + auxiliar.getNombre());
 			break;
 		case(2):
-			valor = 0;
 			print("Incorpore el indice del atributo: ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
@@ -337,7 +326,6 @@ public class KnnTfg {
 			checkLogger(media.toString());
 			break;
 		case(3):
-			valor = 0;
 			print("Introduce el indice: ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
@@ -348,7 +336,6 @@ public class KnnTfg {
 			checkLogger(maximo.toString());
 			break;
 		case(4):
-			valor = 0;
 			print("Introduce el indice: ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
@@ -359,7 +346,6 @@ public class KnnTfg {
 			checkLogger(minimo.toString());
 			break;
 		case(5):
-			valor = 0;
 			print("Introduce un indice: ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
@@ -399,7 +385,6 @@ public class KnnTfg {
 			
 			break;
 		case(2):
-			valor = 0;
 			print("Inserte un indice a mostrar: ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
@@ -410,7 +395,6 @@ public class KnnTfg {
 			checkLogger(nClases.toString());
 			break;
 		case(3):
-			valor = 0;
 			print("Introduce un indice a mostrar: ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
@@ -419,7 +403,6 @@ public class KnnTfg {
 			checkLogger(auxiliar.clases().toString());
 			break;
 		case(4):
-			valor = 0;
 			print("Introduce un indice del atributo a mostrar : ");
 			scanner1 = new Scanner(System.in);
 			valor = scanner1.nextInt();
@@ -446,12 +429,12 @@ public class KnnTfg {
 					"[5] Salir de la experimentación"};
 			print(opcionesExperimentacion);
 			opcion = scanner.nextInt();
+			scanner.nextLine(); // Limpiar el buffer del scanner
 			switch(opcion) {
 			case(1):
 				int valor = 0;
-				Scanner scanner1 = new Scanner(System.in);
 				print("Introduzca el porcentaje de entrenamiento");
-				valor = scanner1.nextInt();
+				valor = scanner.nextInt();
 				nuevo = new Entrenamiento(datos, (double)valor/100);
 				print("Introduce el valor de k: ");
 				int k = scanner.nextInt();
@@ -463,20 +446,20 @@ public class KnnTfg {
 				break;
 			case(3):
 				print("Inserte el nombre para el archivo de entrenamiento: ");
-				scanner1 = new Scanner(System.in);
-				String archivo1 = scanner1.nextLine();
+				scanner = new Scanner(System.in);
+				String archivo1 = scanner.nextLine();
 				print("Introduzca el nombre para el archivo de pruebas: ");
-				scanner1 = new Scanner(System.in);
-				String archivo2 = scanner1.nextLine();
+				scanner = new Scanner(System.in);
+				String archivo2 = scanner.nextLine();
 				nuevo.write(archivo1, archivo2);
 				break;
 			case(4):
 				print("Introduzca el nombre del archivo de entrenamiento: ");
-				scanner1 = new Scanner(System.in);
-				archivo1 = scanner1.nextLine();
+				scanner = new Scanner(System.in);
+				archivo1 = scanner.nextLine();
 				print("Inserte el nombre del archivo de pruebas: ");
-				scanner1 = new Scanner(System.in);
-				archivo2 = scanner1.nextLine();
+				scanner = new Scanner(System.in);
+				archivo2 = scanner.nextLine();
 				nuevo.read(archivo1, archivo2);
 				print("Proporcione  el valor de k: ");
 				k = scanner.nextInt();
@@ -497,13 +480,13 @@ public class KnnTfg {
 		int opcion = 1;
 		Scanner scanner = new Scanner(System.in);
 		opcion = scanner.nextInt();
+		scanner.nextLine(); // Limpiar el buffer del scanner
 		Entrenamiento nuevo = new Entrenamiento();
 		switch(opcion) {
 		case(1):
 			int valor = 0;
-			Scanner scanner1 = new Scanner(System.in);
 			print("Introduzca el porcentaje para el conjunto de entrenamiento");
-			valor = scanner1.nextInt();
+			valor = scanner.nextInt();
 			nuevo = new Entrenamiento(datos, (double)valor/100, 1234);
 			print("Introduce el valor de K: ");
 			int k = scanner.nextInt();
@@ -511,13 +494,10 @@ public class KnnTfg {
 			nuevo.generarMatriz(k);
 			return nuevo;
 		case(2):
-			valor = 0;
-			scanner1 = new Scanner(System.in);
 			print("Introduzca el porcentaje para el conjunto de entrenamiento");
-			valor = scanner1.nextInt();
-			scanner1 = new Scanner(System.in);
+			valor = scanner.nextInt();
 			print("Introduzca la semilla para la generacion aleatoria");
-			int valor2 = scanner1.nextInt();
+			int valor2 = scanner.nextInt();
 			nuevo = new Entrenamiento(datos, (double)valor/100, valor2);
 			print("Introduce el valor de k, por favor: ");
 			k = scanner.nextInt();

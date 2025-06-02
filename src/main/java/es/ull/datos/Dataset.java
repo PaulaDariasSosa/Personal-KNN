@@ -175,7 +175,7 @@ public class Dataset {
 	}
 	
 	public List<Atributo> getAtributosEmpty() {
-		ArrayList<Atributo> aux = new ArrayList<Atributo> (atributos.size());
+		ArrayList<Atributo> aux = new ArrayList<> (atributos.size());
 		for (int i = 0; i < atributos.size(); ++i) {
 			try {
 				Cualitativo auxiliar = (Cualitativo) atributos.get(i);
@@ -217,7 +217,7 @@ public class Dataset {
 	}
 	
 	public List<String> getPesos() {
-		ArrayList<String> valores = new ArrayList<String>();
+		ArrayList<String> valores = new ArrayList<>();
 		for (Atributo valor : this.atributos) valores.add(valor.get());
 		return valores;
 	}

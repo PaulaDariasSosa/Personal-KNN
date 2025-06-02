@@ -12,9 +12,9 @@ import datos.*;
 import vectores.Matriz;
 
 public class Entrenamiento {
-	private Dataset train;
-	private Dataset test;
-	private List<String> clases;
+	Dataset train;
+	Dataset test;
+	List<String> clases;
 	
 	public Entrenamiento() {
 	}

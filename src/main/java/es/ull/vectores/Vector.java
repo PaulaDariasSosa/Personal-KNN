@@ -38,7 +38,7 @@ public class Vector {
      * @return la copia del vector original
      */
     public Vector clonar() {
-        return new Vector(new ArrayList<Double> (this.coef));
+        return new Vector(new ArrayList<> (this.coef));
     }
     
     /**

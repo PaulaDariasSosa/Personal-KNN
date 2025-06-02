@@ -8,7 +8,7 @@ import datos.*;
 import vectores.Vector;
 
 public class KNN {
-  private int vecinos;
+  int vecinos;
   
   public KNN (int k) {
 	  this.vecinos = k;
@@ -44,16 +44,16 @@ public class KNN {
 	  return nombresClases.get(numeroClases.indexOf(Collections.max(numeroClases)));
 			  
   }
-  
+
   public double getDistanciaEuclidea(Vector vieja, Vector nueva, List<Double> pesos) {
-		if (vieja.size() == nueva.size()) return Double.MAX_VALUE;
-		double dist = 0.0;
-		for(int i = 0; i < nueva.size(); i++) {
-			dist += Math.pow((vieja.get(i) - nueva.get(i))*pesos.get(i), 2);
-		}
-		return Math.sqrt(dist);
+	  if (vieja.size() != nueva.size()) return Double.MAX_VALUE;
+	  double dist = 0.0;
+	  for(int i = 0; i < nueva.size(); i++) {
+		  dist += Math.pow((vieja.get(i) - nueva.get(i))*pesos.get(i), 2);
 	  }
-  
+	  return Math.sqrt(dist);
+  }
+
   public String getVecino(List<Instancia> candidatos, Vector distancias){
 	  Vector aux = new Vector();
 	  ArrayList<Integer> indices = new ArrayList<>();
