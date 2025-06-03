@@ -7,8 +7,14 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * @brief Clase de prueba para la clase Instancia.
+ */
  class InstanciaTest {
-    @Test
+   /**
+    * @brief Prueba del constructor de la clase Instancia con una cadena de texto.
+    */
+   @Test
      void testInstanciaConstrucotrString() {
         Instancia instancia = new Instancia("1.0,2.0,3.0,ClaseA");
         assertEquals(4, instancia.getValores().size());
@@ -16,33 +22,48 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals("ClaseA", instancia.getClase());
     }
 
-    @Test
+   /**
+    * @brief Prueba del constructor de la clase Instancia con una lista de valores.
+    */
+   @Test
      void testInstanciaConstructorList() {
         Instancia instancia = new Instancia(List.of(1.0, 2.0, 3.0, "ClaseA"));
         assert instancia.getValores().size() == 4;
         assert instancia.getValores().get(0).equals(1.0);
     }
 
-    @Test
+   /**
+    * @brief Prueba del método toString de la clase Instancia.
+    */
+   @Test
      void testInstanciaToString() {
         Instancia instancia = new Instancia("1.0,2.0,3.0,ClaseA");
         assertEquals("[1.0, 2.0, 3.0, ClaseA]", instancia.toString());
     }
 
-    @Test
+   /**
+    * @brief Prueba del método getVector de la clase Instancia.
+    */
+   @Test
      void testInstanciaGetVector() {
         Instancia instancia = new Instancia("1.0,2.0,3.0");
         Vector vector = instancia.getVector();
         assertEquals(0, vector.size());
     }
 
-    @Test
+   /**
+    * @brief Prueba del método getClase de la clase Instancia.
+    */
+   @Test
      void testInstanciaGetClase() {
         Instancia instancia = new Instancia("1.0,2.0,3.0,ClaseA");
         assertEquals("ClaseA", instancia.getClase());
     }
 
-    @Test
+   /**
+    * @brief Prueba del método deleteClase de la clase Instancia.
+    */
+   @Test
      void testInstanciaDeleteClase() {
         Instancia instancia = new Instancia("1.0,2.0,3.0,ClaseA");
         instancia.deleteClase();

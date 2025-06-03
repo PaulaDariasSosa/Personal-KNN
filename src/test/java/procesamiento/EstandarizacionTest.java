@@ -9,7 +9,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * @brief Test para la clase Estandarizacion.
+ */
 class EstandarizacionTest {
+   /**
+    * @brief Test para el método procesar de la clase Estandarizacion.
+    */
     @Test
      void testEstandarizacionProcesar() {
         Vector valores = new Vector();

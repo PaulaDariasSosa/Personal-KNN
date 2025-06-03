@@ -5,7 +5,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * @brief Clase de prueba para la clase Matriz.
+ */
  class MatrizTest {
+    /**
+     * @brief Prueba unitaria para verificar la creación y el acceso a una matriz.
+     */
     @Test
      void testMatriz() {
         Matriz m = new Matriz(3, 3);
@@ -22,6 +28,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals(3.0, m.get(2, 2));
     }
 
+    /**
+     * @brief Prueba unitaria para verificar el manejo de excepciones al acceder a índices fuera de rango.
+     */
     @Test
      void testMatrizConExcepciones() {
         Matriz m = new Matriz(3, 3);
@@ -36,6 +45,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         }
     }
 
+    /**
+     * @brief Prueba unitaria para verificar el acceso y la modificación de valores en una matriz.
+     */
     @Test
      void testMatrizGet() {
         Matriz m = new Matriz(2, 2);
@@ -51,6 +63,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals(20.0, m.get(1, 1));
     }
 
+    /**
+     * @brief Prueba unitaria para verificar la modificación de valores en una matriz.
+     */
     @Test
      void testMatrizSet() {
         Matriz m = new Matriz(2, 2);

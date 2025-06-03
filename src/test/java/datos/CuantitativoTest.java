@@ -5,8 +5,14 @@ import vectores.Vector;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * @brief Clase de prueba para la clase Cuantitativo.
+ */
  class CuantitativoTest {
 
+    /**
+     * @brief Constructor de la clase CuantitativoTest.
+     */
     @Test
      void testCuantitativoConstructorSinParametros() {
         Cuantitativo cuantitativo = new Cuantitativo();
@@ -14,6 +20,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(0, cuantitativo.getValores().size());
     }
 
+    /**
+     * @brief Constructor de la clase CuantitativoTest con un nombre.
+     */
     @Test
      void testCuantitativoConstructorConNombre() {
         Cuantitativo cuantitativo = new Cuantitativo("Test");
@@ -21,6 +30,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(0, cuantitativo.getValores().size());
     }
 
+    /**
+     * @brief Constructor de la clase CuantitativoTest con un nombre y un valor.
+     */
     @Test
      void testCuantitativoConstructorConNombreYValor() {
         Cuantitativo cuantitativo = new Cuantitativo("Test", 5.0);
@@ -29,6 +41,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(5.0, cuantitativo.getValores().get(0));
     }
 
+    /**
+     * @brief Constructor de la clase CuantitativoTest con un nombre y un vector de valores.
+     */
     @Test
      void testCuantitativoConstructorConNombreYVector() {
         Vector valores = new Vector();
@@ -41,7 +56,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(2.0, cuantitativo.getValores().get(1));
     }
 
-    @Test
+   /**
+    * @brief Método de prueba para setValores en la clase Cuantitativo.
+    */
+   @Test
      void testCuantitativoSetValores() {
         Cuantitativo cuantitativo = new Cuantitativo("Test");
         Vector nuevosValores = new Vector();
@@ -53,7 +71,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
     }
 
-    @Test
+   /**
+    * @brief Método de prueba para minimo en la clase Cuantitativo.
+    */
+   @Test
      void testCuantitativoMinimo() {
         Cuantitativo cuantitativo = new Cuantitativo("Test");
         Vector valores = new Vector();
@@ -65,7 +86,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(1.0, cuantitativo.minimo());
     }
 
-    @Test
+   /**
+    * @brief Método de prueba para maximo en la clase Cuantitativo.
+    */
+   @Test
      void testCuantitativoMaximo() {
         Cuantitativo cuantitativo = new Cuantitativo("Test");
         Vector valores = new Vector();
@@ -77,7 +101,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(3.0, cuantitativo.maximo());
     }
 
-    @Test
+   /**
+    * @brief Método de prueba para media en la clase Cuantitativo.
+    */
+   @Test
      void testCuantitativoMedia() {
         Cuantitativo cuantitativo = new Cuantitativo("Test");
         Vector valores = new Vector();
@@ -89,7 +116,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(2.0, cuantitativo.media());
     }
 
-    @Test
+   /**
+    * @brief Método de prueba para desviacion en la clase Cuantitativo.
+    */
+   @Test
      void testCuantitativoDesviacion() {
         Cuantitativo cuantitativo = new Cuantitativo("Test");
         Vector valores = new Vector();
@@ -101,7 +131,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(0.8165, cuantitativo.desviacion(), 0.0001);
     }
 
-    @Test
+   /**
+    * @brief Método de prueba para toString en la clase Cuantitativo.
+    */
+   @Test
      void testCuantitativoToString() {
         Cuantitativo cuantitativo = new Cuantitativo("Test");
         Vector valores = new Vector();
@@ -113,7 +146,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(expected, cuantitativo.toString());
     }
 
-    @Test
+   /**
+    * @brief Método de prueba para size en la clase Cuantitativo.
+    */
+   @Test
      void testCuantitativoSize() {
         Cuantitativo cuantitativo = new Cuantitativo("Test");
         Vector valores = new Vector();
@@ -124,7 +160,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(2, cuantitativo.size());
     }
 
-    @Test
+   /**
+    * @brief Método de prueba para estandarizacion en la clase Cuantitativo.
+    */
+   @Test
      void testCuantitativoEstandatizacion(){
         Cuantitativo cuantitativo = new Cuantitativo("Test");
         Vector valores = new Vector();
@@ -141,7 +180,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(1.2247, cuantitativo.getValores().get(2), 0.0001);
     }
 
-    @Test
+   /**
+    * @brief Método de prueba para add en la clase Cuantitativo.
+    */
+   @Test
      void testCuantitativoAdd() {
         Cuantitativo cuantitativo = new Cuantitativo("Test");
         cuantitativo.add(5.0);
@@ -150,7 +192,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(5.0, cuantitativo.getValores().get(0));
     }
 
-    @Test
+   /**
+    * @brief Método de prueba para getValor en la clase Cuantitativo.
+    */
+   @Test
      void testCuantitativoGetValor() {
         Cuantitativo cuantitativo = new Cuantitativo("Test");
         Vector valores = new Vector();
@@ -162,7 +207,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(2.0, cuantitativo.getValor(1));
     }
 
-    @Test
+   /**
+    * @brief Método de prueba para delete en la clase Cuantitativo.
+    */
+   @Test
      void testCuantitativoDelete(){
         Cuantitativo cuantitativo = new Cuantitativo("Test");
         Vector valores = new Vector();
@@ -176,7 +224,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(1.0, cuantitativo.getValor(0));
     }
 
-    @Test
+   /**
+    * @brief Método de prueba para clonar en la clase Cuantitativo.
+    */
+   @Test
      void testCuantitativoClonar(){
         Cuantitativo cuantitativo = new Cuantitativo("Test");
         Vector valores = new Vector();

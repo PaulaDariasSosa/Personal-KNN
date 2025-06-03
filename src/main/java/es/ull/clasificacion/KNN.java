@@ -7,14 +7,30 @@ import java.util.List;
 import datos.*;
 import vectores.Vector;
 
+/**
+ * @brief Implementación del algoritmo K-Nearest Neighbors (KNN).
+ */
 public class KNN {
+	/**
+	 * @brief Número de vecinos a considerar.
+	 */
   int vecinos;
-  
-  public KNN (int k) {
+
+	/**
+	 * @brief Constructor del clasificador KNN.
+	 * @param k
+	 */
+	public KNN (int k) {
 	  this.vecinos = k;
   }
-  
-  public Vector getDistancias(Dataset datos, Instancia nueva){
+
+	/**
+	 * @brief Calcula las distancias entre una nueva instancia y todas las instancias del dataset.
+	 * @param datos
+	 * @param nueva
+	 * @return Vector con las distancias calculadas.
+	 */
+	public Vector getDistancias(Dataset datos, Instancia nueva){
 	Vector aux = new Vector();
 	// obtenemos el peso de los atributos 
 	ArrayList<Atributo>  pesosString = new ArrayList<>(datos.getAtributos());
@@ -27,8 +43,13 @@ public class KNN {
     }
     return aux;
   }
-  
-  public String getClase (List<Instancia> candidatos) {
+
+	/**
+	 * @brief Obtiene la clase más frecuente entre los candidatos.
+	 * @param candidatos
+	 * @return Clase más frecuente entre los candidatos.
+	 */
+	public String getClase (List<Instancia> candidatos) {
 	  ArrayList<String> nombresClases = new ArrayList<>();
 	  for (int i = 0; i < candidatos.size(); i++) {
 		  if (!nombresClases.contains(candidatos.get(i).getClase())) nombresClases.add(candidatos.get(i).getClase());
@@ -45,6 +66,13 @@ public class KNN {
 			  
   }
 
+	/**
+	 * @brief Calcula la distancia euclídea entre dos vectores, considerando los pesos de cada atributo.
+	 * @param vieja
+	 * @param nueva
+	 * @param pesos
+	 * @return Distancia euclídea entre los dos vectores.
+	 */
   public double getDistanciaEuclidea(Vector vieja, Vector nueva, List<Double> pesos) {
 	  if (vieja.size() != nueva.size()) return Double.MAX_VALUE;
 	  double dist = 0.0;
@@ -54,6 +82,12 @@ public class KNN {
 	  return Math.sqrt(dist);
   }
 
+	/**
+	 * @brief Obtiene el vecino más cercano entre los candidatos, considerando las distancias.
+	 * @param candidatos
+	 * @param distancias
+	 * @return Clase del vecino más cercano.
+	 */
   public String getVecino(List<Instancia> candidatos, Vector distancias){
 	  Vector aux = new Vector();
 	  ArrayList<Integer> indices = new ArrayList<>();
@@ -74,8 +108,14 @@ public class KNN {
 	  for (int i = 0; i < indices.size(); i++) elegidos.add(candidatos.get(indices.get(i)));
 	  return this.getClase(elegidos);
   }
-  
-  public String clasificar(Dataset datos, Instancia nueva) {
+
+	/**
+	 * @brief Clasifica una nueva instancia basándose en el dataset proporcionado.
+	 * @param datos
+	 * @param nueva
+	 * @return Clase a la que pertenece la nueva instancia, según el algoritmo KNN.
+	 */
+	public String clasificar(Dataset datos, Instancia nueva) {
 	  Vector aux = this.getDistancias(datos, nueva);
 	  ArrayList<Instancia> elegidos = new ArrayList<>();
 	  for (int i = 0; i < datos.numeroCasos(); ++i) {

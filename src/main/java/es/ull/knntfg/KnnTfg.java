@@ -9,11 +9,28 @@ import datos.*;
 import procesamiento.*;
 import entrenamiento.*;
 
+/**
+ * @brief Clase principal del programa KNN_TFG.
+ */
 public class KnnTfg {
+	/**
+	 * @brief Nombre del logger utilizado para registrar eventos.
+	 */
 	static final String KNN_TFG = "knntfg";
+	/**
+	 * @brief Dataset que contiene los datos crudos.
+	 */
 	static Dataset datosCrudos = new Dataset();
+	/**
+	 * @brief Dataset que contiene los datos procesados.
+	 */
 	static Dataset datos = new Dataset();
 
+	/**
+	 * @brief Método principal que inicia el programa.
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException {
 		print("Iniciando el programa");
 		boolean salida = false;
@@ -34,6 +51,12 @@ public class KnnTfg {
 		}
     }
 
+	/**
+	 * @brief Método que maneja las opciones del menú principal.
+	 * @param opcion
+	 * @return true si se desea salir del programa, false en caso contrario.
+	 * @throws IOException
+	 */
 	public static boolean opciones(Integer opcion) throws IOException {
 		String ruta = "";
 		String archivo = "";
@@ -93,7 +116,12 @@ public class KnnTfg {
 		}
 		return false;
 	}
-	
+
+	/**
+	 * @brief Método que permite leer un archivo y seleccionar su ruta.
+	 * @param ruta Ruta del archivo.
+	 * @return Nombre del archivo seleccionado.
+	 */
 	public static String readFile(String ruta) {
 		int opcion = 2;
 		String archivo = "";
@@ -126,7 +154,12 @@ public class KnnTfg {
 		}
 		return archivo;
 	}
-	
+
+	/**
+	 * @brief Método que permite modificar el dataset.
+	 * @param data Dataset a modificar.
+	 * @return Dataset modificado.
+	 */
 	public static Dataset modify(Dataset data) {
 		int opcion = 2;
 		String valores = "";
@@ -179,7 +212,12 @@ public class KnnTfg {
 		}
 		return data;
 	}
-	
+
+	/**
+	 * @brief Método que permite preprocesar el dataset.
+	 * @param data Dataset a preprocesar.
+	 * @return Dataset preprocesado.
+	 */
 	public static Dataset preprocesar(Dataset data) {
 		String[] opcionesPreprocesado = {
 				"[1] Datos crudos",
@@ -215,7 +253,12 @@ public class KnnTfg {
 		}
 		return data;
 	}
-	
+
+	/**
+	 * @brief Método que permite cambiar los pesos de los atributos del dataset.
+	 * @param data Dataset cuyos pesos se desean cambiar.
+	 * @return Dataset con los pesos modificados.
+	 */
 	public static Dataset cambiarPesos(Dataset data) {
 		String[] opcionesPesos = {
 				"[1] Asignar pesos distintos a todos los atributos",
@@ -256,7 +299,11 @@ public class KnnTfg {
 		}
 		return data;
 	}
-	
+
+	/**
+	 * @brief Método que muestra información del dataset.
+	 * @param data Dataset del cual se desea mostrar la información.
+	 */
 	public static void info(Dataset data) {
 		String[] opcionesInfo = {
 				"[1] Mostrar dataset",
@@ -294,7 +341,11 @@ public class KnnTfg {
 			break;
 		}
 	}
-	
+
+	/**
+	 * @brief Método que muestra información de los atributos cuantitativos del dataset.
+	 * @param data Dataset del cual se desea mostrar la información cuantitativa.
+	 */
 	public static void infoCuantitativo(Dataset data) {
 		String[] opcionesCuantitativo = {
 				"[1] Mostrar nombre",
@@ -359,7 +410,11 @@ public class KnnTfg {
 			break;
 		}
 	}
-	
+
+	/**
+	 * @brief Método que muestra información de los atributos cualitativos del dataset.
+	 * @param data Dataset del cual se desea mostrar la información cualitativa.
+	 */
 	public static void infoCualitativo(Dataset data) {
 		String[] opcionesCualitativo = {
 				"[1] Mostrar nombre",
@@ -415,7 +470,12 @@ public class KnnTfg {
 			break;
 		}
 	}
-	
+
+	/**
+	 * @brief Método que inicia la experimentación con el dataset.
+	 * @param datos Dataset a experimentar.
+	 * @throws IOException
+	 */
 	public static void experimentar(Dataset datos) throws IOException {
 		int opcion = 1;
 		Scanner scanner = new Scanner(System.in);
@@ -471,7 +531,12 @@ public class KnnTfg {
 			}
 		}
 	}
-	
+
+	/**
+	 * @brief Método que realiza una experimentación aleatoria con el dataset.
+	 * @param datos Dataset a experimentar.
+	 * @return Un objeto Entrenamiento con los resultados de la experimentación.
+	 */
 	public static Entrenamiento experimentacionAleatoria(Dataset datos) {
 		String[] opcionesExperimentacion = {
 				"[1] Semilla(Seed) por defecto",
@@ -510,10 +575,18 @@ public class KnnTfg {
 		return nuevo;
 	}
 
+	/**
+	 * @brief Método que imprime un mensaje en el logger.
+	 * @param mensaje Mensaje a imprimir.
+	 */
 	public static void print(String mensaje) {
 		Logger.getLogger(KNN_TFG).info(mensaje);
 	}
 
+	/**
+	 * @brief Método que comprueba si el logger está habilitado para imprimir mensajes.
+	 * @param cadena Mensaje a imprimir si el logger está habilitado.
+	 */
 	public static void checkLogger(String cadena) {
 		if (cadena == null || cadena.isEmpty()) {
 			print("No se ha introducido un nombre de archivo válido.");
@@ -524,6 +597,10 @@ public class KnnTfg {
 		}
 	}
 
+	/**
+	 * @brief Método que imprime un array de cadenas.
+	 * @param lista Array de cadenas a imprimir.
+	 */
 	public static void print(String[] lista) {
 		if (lista == null || lista.length == 0) {
 			print("No hay elementos para mostrar.");

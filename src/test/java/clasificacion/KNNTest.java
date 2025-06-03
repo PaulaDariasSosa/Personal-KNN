@@ -10,14 +10,23 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * @brief Clase de prueba para el clasificador KNN.
+ */
  class KNNTest {
+    /**
+     * @brief Prueba del constructor de KNN.
+     */
     @Test
     void testKNNConstructor() {
         KNN knn = new KNN(3);
         assertEquals(3, knn.vecinos);
     }
 
-    @Test
+   /**
+    * @brief Prueba de la función getDistanciaEuclidea.
+    */
+   @Test
      void testGetDistanciaEuclidea() {
         KNN knn = new KNN(3);
         Vector vieja = new Vector();
@@ -33,7 +42,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(5.0, distancia, 0.001);
     }
 
-    @Test
+   /**
+    * @brief Prueba de la función getDistanciaEuclidea con un caso incorrecto.
+    */
+   @Test
      void testGetDistanciaEuclideaWrong() {
         KNN knn = new KNN(3);
         Vector vieja = new Vector();
@@ -48,7 +60,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(1.7976931348623157E308, distancia, 0.001);
     }
 
-    @Test
+   /**
+    * @brief Prueba de la función getClase.
+    */
+   @Test
      void testGetClase() {
         KNN knn = new KNN(3);
         List<Object> lista1 = new ArrayList<>();
@@ -73,6 +88,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals("A", clase);
     }
 
+   /**
+    * @brief Prueba de la función getVecino.
+    * @throws IOException
+    */
     @Test
      void testGetVecino() throws IOException {
         KNN knn = new KNN(2);
@@ -97,7 +116,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals("A", clase);
     }
 
-    @Test
+   /**
+    * @brief Prueba de la función clasificar.
+    */
+   @Test
      void testClasificar() {
         KNN knn = new KNN(2);
         List<Double> lista1 = new ArrayList<>();

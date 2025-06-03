@@ -9,13 +9,22 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * @brief Clase de prueba para la clase Dataset.
+ */
  class DatasetTest {
+    /**
+     * @brief Prueba del constructor vacío de la clase Dataset.
+     */
     @Test
      void testDatasetConstructorVacio() {
         Dataset dataset = new Dataset();
         assert(dataset.getAtributos().isEmpty());
     }
 
+    /**
+     * @brief Prueba del constructor de la clase Dataset con una lista de atributos.
+     */
     @Test
      void testDatasetConstructorConLista() {
         List<Atributo> atributos = new ArrayList<>();
@@ -25,6 +34,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("Atributo1", dataset.getAtributos().get(0).getNombre());
     }
 
+    /**
+     * @brief Prueba del constructor de la clase Dataset con atributos cuantitativos y cualitativos.
+     */
     @Test
      void testDatasetConstructorConAtributos() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -38,6 +50,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("Atributo2", dataset.getAtributos().get(1).getNombre());
     }
 
+    /**
+     * @brief Prueba del constructor de la clase Dataset con un archivo CSV.
+     */
     @Test
      void testDatasetConstructorArchivo() throws IOException {
         String ruta = "iris.csv";
@@ -46,6 +61,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals(150, dataset.numeroCasos());
     }
 
+    /**
+     * @brief Prueba del metodo cambiarPeso con una lista de pesos.
+     */
     @Test
      void testDatasetCambiarPesoList() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -63,6 +81,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals(0.3, dataset.getAtributos().get(1).getPeso());
     }
 
+    /**
+     * @brief Prueba del metodo cambiarPeso con una lista de pesos que no coincide con el número de atributos.
+     */
     @Test
      void testDatasetCambiarPesoListException() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -77,6 +98,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         });
     }
 
+    /**
+     * @brief Prueba del método cambiarPeso con un índice y un nuevo peso.
+     */
     @Test
      void testDatasetCambiarPesoIndividual() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -93,6 +117,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals(0.5, dataset.getAtributos().get(1).getPeso());
     }
 
+    /**
+     * @brief Prueba del método cambiarPeso
+     */
     @Test
      void testDatasetCambiarPesoDouble() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -109,6 +136,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals(0.6, dataset.getAtributos().get(1).getPeso());
     }
 
+    /**
+     * @brief Prueba del método toString de la clase Dataset.
+     */
     @Test
      void testDatasetToString() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -121,6 +151,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals(expected, dataset.toString());
     }
 
+    /**
+     * @brief Prueba del método add de la clase Dataset con una instancia.
+     */
     @Test
      void testDatasetAddInstancia(){
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -138,6 +171,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("Clase2", dataset.getInstance(1).getValores().get(1));
     }
 
+    /**
+     * @brief Prueba del método add de la clase Dataset con una lista de valores.
+     */
     @Test
      void testDatasetAddList(){
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -157,6 +193,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("Clase2", dataset.getInstance(1).getValores().get(1));
     }
 
+    /**
+     * @brief Prueba del método getAtributosEmpty de la clase Dataset.
+     */
     @Test
      void testDatasetGetAtributosEmpty() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -173,6 +212,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("Atributo2", atributosEmpty.get(1).getNombre());
     }
 
+    /**
+     * @brief Prueba del método getValores de la clase Dataset.
+     */
     @Test
      void testDatasetGetValores() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -189,6 +231,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("Clase1", valores.get(1));
     }
 
+    /**
+     * @brief Prueba del método getPesos de la clase Dataset.
+     */
     @Test
      void testDatasetGetPesos() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -205,6 +250,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("Atributo2: 1.0", pesos.get(1));
     }
 
+    /**
+     * @brief Prueba del método getClases de la clase Dataset.
+     */
     @Test
      void testDatasetGetClases() {
         Cualitativo atributo1 = new Cualitativo("Atributo1", "Clase1");
@@ -220,13 +268,19 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("Clase2", clases.get(0));
     }
 
-    @Test
+   /**
+    * @brief Prueba del método getPreprocesado de la clase Dataset.
+    */
+   @Test
      void testDatasetGetPreprocesado() {
         Dataset dataset = new Dataset();
         dataset.setPreprocesado(1);
         assertEquals(1, dataset.getPreprocesado());
     }
 
+    /**
+     * @brief Prueba del método setAtributos de la clase Dataset.
+     */
     @Test
      void testDatasetSetAtributos() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -244,6 +298,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("NuevoAtributo", dataset.getAtributos().get(0).getNombre());
     }
 
+    /**
+     * @brief Prueba del método clonar de la clase Dataset.
+     */
     @Test
      void testDatasetClonar() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -260,6 +317,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("Atributo2", clonado.getAtributos().get(1).getNombre());
     }
 
+    /**
+     * @brief Prueba del método getInstance de la clase Dataset.
+     */
     @Test
      void testDatasetGetInstance() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -276,6 +336,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("Clase1", instancia.getValores().get(1));
     }
 
+    /**
+     * @brief Prueba del método getAtributosEmpty de la clase Dataset con diferentes tipos de atributos.
+     */
     @Test
      void testDatasetGetAtributosEmptyWithCuantitativo() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -289,6 +352,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("Atributo1", atributosEmpty.get(0).getNombre());
     }
 
+    /**
+     * @brief Prueba del método getAtributosEmpty de la clase Dataset con atributos cualitativos.
+     */
     @Test
      void testDatasetGetAtributosEmptyWithCualitativo() {
         Cualitativo atributo1 = new Cualitativo("Atributo1", "Clase1");
@@ -302,6 +368,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals( "Atributo1", atributosEmpty.get(0).getNombre());
     }
 
+    /**
+     * @brief Prueba del método getAtributosEmpty de la clase Dataset con atributos mixtos.
+     */
     @Test
      void testDatasetGetAtributosEmptyWithMixedTypes() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -318,6 +387,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("Atributo2", atributosEmpty.get(1).getNombre());
     }
 
+    /**
+     * @brief Prueba del método getAtributosEmpty de la clase Dataset con una lista vacía de atributos.
+     */
     @Test
      void testDatasetGetAtributosEmptyWithNoAttributes() {
         Dataset dataset = new Dataset();
@@ -327,6 +399,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals(0, atributosEmpty.size());
     }
 
+    /**
+     * @brief Prueba del método delete de la clase Dataset.
+     */
     @Test
      void testDatasetDelete() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -342,6 +417,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("Atributo1", dataset.getAtributos().get(0).getNombre());
     }
 
+    /**
+     * @brief Prueba del método delete de la clase Dataset con un índice fuera de rango.
+     */
     @Test
      void testDatasetDeleteException() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -356,6 +434,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         });
     }
 
+    /**
+     * @brief Prueba del método read de la clase Dataset.
+     */
     @Test
      void testDatasetRead() throws IOException {
         String ruta = "iris.csv";
@@ -373,6 +454,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals("iris", nombresAtributos.get(4));
     }
 
+    /**
+     * @brief Prueba del método read de la clase Dataset con un archivo inexistente.
+     */
     @Test
      void testDatasetReadException() {
         String ruta = "archivo_inexistente.csv";
@@ -381,6 +465,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         });
     }
 
+    /**
+     * @brief Prueba del método nombreAtributos de la clase Dataset.
+     */
     @Test
      void testDatasetNumeroAtributos() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -393,6 +480,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals(2, dataset.numeroAtributos());
     }
 
+    /**
+     * @brief Prueba del método numeroCasos de la clase Dataset.
+     */
     @Test
      void testDatasetNumeroCasos() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);
@@ -410,6 +500,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         assertEquals(3, dataset.numeroCasos());
     }
 
+    /**
+     * @brief Prueba del método get de la clase Dataset.
+     */
     @Test
      void testDatasetGetAtributoByIndex() {
         Cuantitativo atributo1 = new Cuantitativo("Atributo1", 1.0);

@@ -6,7 +6,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * @brief Clase de prueba para la clase Cualitativo.
+ */
  class CualitativoTest {
+    /**
+     * @brief Test para verificar el constructor por defecto de Cualitativo.
+     */
     @Test
      void testCualitativo() {
         Cualitativo atributo = new Cualitativo("Color");
@@ -18,6 +24,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals("Color: 1.0", atributo.get());
     }
 
+    /**
+     * @brief Test para verificar el constructor con un valor inicial.
+     */
     @Test
      void testCualitativoGetPeso() {
         Cualitativo atributo = new Cualitativo("Color");
@@ -28,6 +37,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(1.0, atributo.getPeso(), 0.001);
     }
 
+    /**
+     * @brief Test para verificar el método get() de Cualitativo.
+     */
     @Test
      void testCualitativoGet() {
         Cualitativo atributo = new Cualitativo("Color");
@@ -38,6 +50,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals("Color: 1.0", atributo.get());
     }
 
+    /**
+     * @brief Test para verificar el método setNombre() de Cualitativo.
+     */
     @Test
      void testCualitativoSetNombre() {
         Cualitativo atributo = new Cualitativo("Color");
@@ -45,6 +60,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals("NuevoColor", atributo.getNombre());
     }
 
+    /**
+     * @brief Test para verificar el método add() de Cualitativo.
+     */
     @Test
      void testCualitativoAdd() {
         Cualitativo atributo = new Cualitativo("Color");
@@ -58,6 +76,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals("Azul", atributo.getValor(2));
     }
 
+    /**
+     * @brief Test para verificar el método delete() de Cualitativo.
+     */
     @Test
      void testCualitativoDelete() {
         Cualitativo atributo = new Cualitativo("Color");
@@ -71,6 +92,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals("Azul", atributo.getValor(1));
     }
 
+    /**
+     * @brief Test para verificar el método clonar() de Cualitativo.
+     */
     @Test
      void testCualitativoClonar() {
         Cualitativo atributo = new Cualitativo("Color");
@@ -85,6 +109,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(atributo.getValor(2), clon.getValor(2));
     }
 
+    /**
+     * @brief Test para verificar el método frecuencia() de Cualitativo.
+     */
     @Test
      void testCualitativoFrecuencia() {
         Cualitativo atributo = new Cualitativo("Color");
@@ -97,6 +124,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(0.3333333333333333, atributo.frecuencia().get(1), 0.001); // Verde
     }
 
+    /**
+     * @brief Test para verificar el método nClases() de Cualitativo.
+     */
     @Test
      void testCualitativoNClases() {
         Cualitativo atributo = new Cualitativo("Color");
@@ -108,6 +138,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(3, atributo.nClases());
     }
 
+    /**
+     * @brief Test para verificar el método clases() de Cualitativo.
+     */
     @Test
      void testCualitativoClases() {
         Cualitativo atributo = new Cualitativo("Color");
@@ -122,6 +155,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals("Azul", atributo.clases().get(2));
     }
 
+    /**
+     * @brief Test para verificar el método getValor() de Cualitativo
+     */
     @Test
      void testCualitativoGetValor() {
         Cualitativo atributo = new Cualitativo("Color");
@@ -134,6 +170,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals("Azul", atributo.getValor(2));
     }
 
+    /**
+     * @brief Test para verificar el método toString() de Cualitativo.
+     */
     @Test
      void testCualitativoToString() {
         Cualitativo atributo = new Cualitativo("Color");
@@ -145,20 +184,29 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(expectedString, atributo.toString());
     }
 
-    @Test
+   /**
+    * @brief Test para verificar el constructor vacío de Cualitativo.
+    */
+   @Test
      void testCualitativoEmptyConstructor() {
         Cualitativo atributo = new Cualitativo();
         assertEquals(0, atributo.size());
         assertEquals(": 1.0", atributo.get());
     }
 
-    @Test
+   /**
+    * @brief Test para verificar el constructor con un valor inicial de Cualitativo.
+    */
+   @Test
      void testCualitativoValorConstructor() {
         Cualitativo atributo = new Cualitativo("Color", "Rojo");
         assertEquals(1, atributo.size());
         assertEquals("Color: 1.0", atributo.get());
     }
 
+    /**
+     * @brief Test para verificar el constructor con una lista de valores de Cualitativo.
+     */
     @Test
      void testCualitativoValorListConstructor() {
         Cualitativo atributo = new Cualitativo("Color", List.of("Rojo", "Verde", "Azul"));
@@ -166,6 +214,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals("Color: 1.0", atributo.get());
     }
 
+    /**
+     * @brief Test para verificar el método getValores() de Cualitativo.
+     */
     @Test
      void testCualitativoGetValores(){
         Cualitativo atributo = new Cualitativo("Color");

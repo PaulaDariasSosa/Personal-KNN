@@ -16,26 +16,53 @@ import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * @brief Clase de prueba para KnnTfg.
+ */
  class KnnTfgTest {
+    /**
+     * @brief Clase interna para manejar los logs durante las pruebas.
+     */
     static class TestLogHandler extends Handler {
+        /**
+         * @brief StringBuilder para almacenar los mensajes de log.
+         */
         private final StringBuilder mensajes = new StringBuilder();
 
+        /**
+         * @brief Constructor de TestLogHandler.
+         */
         @Override
         public void publish(LogRecord record) {
             mensajes.append(record.getMessage());
         }
 
+        /**
+         * @brief Método para flush.
+         */
         @Override
         public void flush() {}
 
+        /**
+         * @brief Método para cerrar el handler.
+         * @throws SecurityException si ocurre un error de seguridad.
+         */
         @Override
         public void close() throws SecurityException {}
 
+        /**
+         * @brief Método para obtener los mensajes de log.
+         * @return String con los mensajes de log.
+         */
         public String getMensajes() {
             return mensajes.toString();
         }
     }
 
+    /**
+     * @brief Prueba unitaria para el método main de KnnTfg.
+     * @throws IOException si ocurre un error de entrada/salida.
+     */
     @Test
     void testMain() throws IOException {
         String entradaSimulada = "5\n";
@@ -46,6 +73,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         System.setIn(System.in);
     }
 
+    /**
+     * @brief Prueba unitaria para la opción de salir del menú.
+     * @throws IOException
+     */
     @Test
     void testOpcionExit() throws IOException {
         String entradaSimulada = "4\n";
@@ -56,6 +87,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertEquals(true, salida);
     }
 
+    /**
+     * @brief Prueba unitaria para la opción de modificar el dataset.
+     * @throws IOException si ocurre un error de entrada/salida.
+     */
     @Test
     void testModifyAdd() throws IOException {
         Dataset dataset = new Dataset("iris.csv");
@@ -66,6 +101,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertEquals(151, dataset.numeroCasos());
     }
 
+    /**
+     * @brief Prueba unitaria para la opción de modificar el dataset.
+     * @throws IOException si ocurre un error de entrada/salida.
+     */
     @Test
     void testModifyDelete() throws IOException {
         Dataset dataset = new Dataset("iris.csv");
@@ -76,6 +115,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertEquals(149, dataset.numeroCasos());
     }
 
+    /**
+     * @brief Prueba unitaria para la opción de modificar el dataset.
+     * @throws IOException si ocurre un error de entrada/salida.
+     */
     @Test
     void testModifyModify() throws IOException {
         Dataset dataset = new Dataset("iris.csv");
@@ -86,6 +129,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertEquals(150, dataset.numeroCasos());
     }
 
+    /**
+     * @brief Prueba unitaria para la opción de preprocesar el dataset.
+     * @throws IOException si ocurre un error de entrada/salida.
+     */
     @Test
     void testPreporcesarCrudo() throws IOException {
         Dataset dataset = new Dataset("iris.csv");
@@ -96,6 +143,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertEquals(dataset, crudos);
     }
 
+    /**
+     * @brief Prueba unitaria para la opción de normalizar el dataset.
+     * @throws IOException si ocurre un error de entrada/salida.
+     */
     @Test
     void testPreprocesarNormalizado() throws IOException {
         Dataset dataset = new Dataset("iris.csv");
@@ -107,6 +158,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertEquals(dataset.numeroAtributos(), normalizado.numeroAtributos());
     }
 
+    /**
+     * @brief Prueba unitaria para la opción de estandarizar el dataset.
+     * @throws IOException si ocurre un error de entrada/salida.
+     */
     @Test
     void testPreprocesarEstandarizado() throws IOException {
         Dataset dataset = new Dataset("iris.csv");
@@ -118,6 +173,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertEquals(dataset.numeroAtributos(), estandarizado.numeroAtributos());
     }
 
+    /**
+     * @brief Prueba unitaria para la opción de preprocesar el dataset con valores por defecto.
+     * @throws IOException si ocurre un error de entrada/salida.
+     */
     @Test
     void testPreprocesarDefecto() throws IOException {
         Dataset dataset = new Dataset("iris.csv");
@@ -129,6 +188,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertEquals(dataset.numeroAtributos(), normalizadoEstandarizado.numeroAtributos());
     }
 
+    /**
+     * @brief Prueba unitaria para la opción de cambiar los pesos de los atributos.
+     * @throws IOException si ocurre un error de entrada/salida.
+     */
     @Test
     void testCambiarPesoTodosIgual() throws IOException {
         Dataset dataset = new Dataset("iris.csv");
@@ -145,6 +208,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertEquals(pesos, dataset.getPesos());
     }
 
+    /**
+     * @brief Prueba unitaria para la opción de experimentar con el dataset.
+     * @throws IOException si ocurre un error de entrada/salida.
+     */
     @Test
     void testExperimentar() throws IOException {
         Dataset dataset = new Dataset("iris.csv");
@@ -166,6 +233,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertTrue(logs.contains("La precisión predictiva: "));
     }
 
+    /**
+     * @brief Prueba unitaria para la opción de experimentar con el dataset con seed definida.
+     * @throws IOException si ocurre un error de entrada/salida.
+     */
     @Test
     void testExperimentarAleatorioSeedDefecto() throws IOException {
         Dataset dataset = new Dataset("iris.csv");
@@ -187,6 +258,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertTrue(logs.contains("La precisión predictiva: "));
     }
 
+    /**
+     * @brief Prueba unitaria para la opción de experimentar con el dataset con seed manual.
+     * @throws IOException si ocurre un error de entrada/salida.
+     */
     @Test
     void testExperimentarAleatorioSeedManual() throws IOException {
         Dataset dataset = new Dataset("iris.csv");

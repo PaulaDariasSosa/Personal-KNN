@@ -11,7 +11,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * @brief Test para la clase Normalizacion.
+ */
 class NormalizacionTest {
+   /**
+    * @brief Test para el método procesar de la clase Normalizacion.
+    */
     @Test
      void testNormalizacionProcesar() {
         Vector valores = new Vector();

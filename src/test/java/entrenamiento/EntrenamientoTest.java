@@ -11,27 +11,53 @@ import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @brief Clase de prueba para la clase Entrenamiento.
+ */
  class EntrenamientoTest {
 
+    /**
+     * @brief Clase de prueba para capturar los mensajes de log.
+     */
     static class TestLogHandler extends Handler {
+        /**
+         * @brief Mensajes capturados por el handler.
+         */
         private final StringBuilder mensajes = new StringBuilder();
 
+        /**
+         * @brief Constructor de TestLogHandler.
+         */
         @Override
         public void publish(LogRecord record) {
             mensajes.append(record.getMessage());
         }
 
+        /**
+         * @brief Método que se invoca para limpiar el buffer de mensajes.
+         */
         @Override
         public void flush() {}
 
+        /**
+         * @brief Método que se invoca para cerrar el handler.
+         * @throws SecurityException si ocurre un error de seguridad.
+         */
         @Override
         public void close() throws SecurityException {}
 
+        /**
+         * @brief Método para obtener los mensajes capturados.
+         * @return los mensajes capturados como una cadena.
+         */
         public String getMensajes() {
             return mensajes.toString();
         }
     }
 
+    /**
+     * @brief Prueba del constructor vacío de la clase Entrenamiento.
+     */
     @Test
      void testEntrenamientoConstructorVacio() {
         Entrenamiento entrenamiento = new Entrenamiento();
@@ -40,6 +66,10 @@ import static org.junit.jupiter.api.Assertions.*;
         assertNull(entrenamiento.test);
     }
 
+    /**
+     * @brief Prueba del constructor de la clase Entrenamiento con un Dataset.
+     * @throws IOException
+     */
     @Test
      void testEntrenamientoConstructorConDatosYPorcentaje() throws IOException {
         Dataset datos = new Dataset("iris.csv");
@@ -50,6 +80,10 @@ import static org.junit.jupiter.api.Assertions.*;
         assertEquals(75, entrenamiento.test.numeroCasos());
     }
 
+    /**
+     * @brief Prueba del constructor de la clase Entrenamiento con un Dataset, porcentaje y semilla.
+     * @throws IOException
+     */
     @Test
      void testEntrenamientoConstructorConDatosPorcentajeYSemilla() throws IOException {
         Dataset datos = new Dataset("iris.csv");
@@ -60,6 +94,10 @@ import static org.junit.jupiter.api.Assertions.*;
         assertEquals(75, entrenamiento.test.numeroCasos());
     }
 
+    /**
+     * @brief Prueba del constructor de la clase Entrenamiento con un Dataset y porcentaje cero.
+     * @throws IOException
+     */
     @Test
      void testEntrenamientoConstructorConDatosYPorcentajeCero() throws IOException {
         Dataset datos = new Dataset("iris.csv");
@@ -70,6 +108,10 @@ import static org.junit.jupiter.api.Assertions.*;
         assertEquals(150, entrenamiento.test.numeroCasos());
     }
 
+    /**
+     * @brief Prueba del constructor de la clase Entrenamiento con un Dataset y porcentaje uno(100%).
+     * @throws IOException
+     */
     @Test
      void testEntrenamientoConstructorConDatosYPorcentajeUno() throws IOException {
         Dataset datos = new Dataset("iris.csv");
@@ -80,6 +122,10 @@ import static org.junit.jupiter.api.Assertions.*;
         assertEquals(0, entrenamiento.test.numeroCasos());
     }
 
+    /**
+     * @brief Prueba del metodo generarPrediccion de la clase Entrenamiento.
+     * @throws IOException
+     */
     @Test
      void testEntrenamientoGenerarPrediccion() throws IOException {
         Logger logger = Logger.getLogger(Entrenamiento.class.getName());
@@ -101,6 +147,10 @@ import static org.junit.jupiter.api.Assertions.*;
         assertTrue(logs.contains("0.0"));
     }
 
+    /**
+     * @brief Prueba del metodo generarMatriz de la clase Entrenamiento.
+     * @throws IOException
+     */
     @Test
      void testEntrenamientoGenerarMatriz() throws IOException {
         Logger logger = Logger.getLogger(Entrenamiento.class.getName());
@@ -118,6 +168,9 @@ import static org.junit.jupiter.api.Assertions.*;
         assertTrue(logs.contains("[Iris-setosa, Iris-versicolor, Iris-virginica]"));
     }
 
+    /**
+     * @brief Prueba del método write de la clase Entrenamiento.
+     */
     @Test
      void testEntrenamientoWrite() throws IOException {
         Dataset datos = new Dataset("iris.csv");
@@ -132,6 +185,10 @@ import static org.junit.jupiter.api.Assertions.*;
         new java.io.File("test.csv").delete();
     }
 
+    /**
+     * @brief Prueba del método read de la clase Entrenamiento.
+     * @throws IOException
+     */
     @Test
      void testEntrenamientoRead() throws IOException {
         Dataset datos = new Dataset("iris.csv");

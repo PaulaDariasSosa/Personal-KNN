@@ -11,14 +11,34 @@ import clasificacion.KNN;
 import datos.*;
 import vectores.Matriz;
 
+/**
+ * @brief Clase que representa el entrenamiento de un modelo de clasificación.
+ */
 public class Entrenamiento {
+	/**
+	 * @brief Conjunto de datos de entrenamiento.
+	 */
 	Dataset train;
+	/**
+	 * @brief Conjunto de datos de prueba.
+	 */
 	Dataset test;
+	/**
+	 * @brief Lista de clases presentes en el conjunto de datos.
+	 */
 	List<String> clases;
-	
+
+	/**
+	 * @brief Constructor por defecto de la clase Entrenamiento.
+	 */
 	public Entrenamiento() {
 	}
-	
+
+	/**
+	 * @brief Constructor que inicializa el conjunto de entrenamiento y prueba a partir de un Dataset y un porcentaje.
+	 * @param datos Conjunto de datos original.
+	 * @param porcentaje Porcentaje de datos a utilizar para el entrenamiento.
+	 */
 	public Entrenamiento(Dataset datos, double porcentaje) {
 		Dataset trainset = new Dataset(datos.getAtributosEmpty());
 		Dataset testset = new Dataset(datos.getAtributosEmpty());
@@ -36,7 +56,13 @@ public class Entrenamiento {
 		this.test.setPreprocesado(datos.getPreprocesado());
 		this.train.setPreprocesado(datos.getPreprocesado());
 	}
-	
+
+	/**
+	 * @brief Constructor que inicializa el conjunto de entrenamiento y prueba a partir de un Dataset, un porcentaje y una semilla.
+	 * @param datos Conjunto de datos original.
+	 * @param porcentaje Porcentaje de datos a utilizar para el entrenamiento.
+	 * @param semilla Semilla para la generación aleatoria de índices.
+	 */
 	public Entrenamiento(Dataset datos, double porcentaje, int semilla) {
 		Dataset trainset = new Dataset(datos.getAtributosEmpty());
 		Dataset testset = new Dataset(datos.getAtributosEmpty());
@@ -61,7 +87,11 @@ public class Entrenamiento {
 		this.test.setPreprocesado(datos.getPreprocesado());
 		this.train.setPreprocesado(datos.getPreprocesado());
 	}
-	
+
+	/**
+	 * @brief Metodo para generar una predicción utilizando el algoritmo KNN.
+	 * @param valorK Valor de K para el algoritmo KNN.
+	 */
 	public void generarPrediccion(int valorK) {
 		Dataset pruebas = new Dataset(test);
 		Double aciertos = 0.0;
@@ -87,7 +117,11 @@ public class Entrenamiento {
 			Logger.getLogger(Entrenamiento.class.getName()).info(String.valueOf(precision));
 		}
 	}
-	
+
+	/**
+	 * @brief Método para generar una matriz de confusión utilizando el algoritmo KNN.
+	 * @param valorK Valor de K para el algoritmo KNN.
+	 */
 	public void generarMatriz(int valorK) {
 		Dataset pruebas = new Dataset(test);
 		Matriz confusion = new Matriz (clases.size(), clases.size());
@@ -105,7 +139,13 @@ public class Entrenamiento {
 		}
 		confusion.print();
 	}
-	
+
+	/**
+	 * @brief Método para escribir los conjuntos de entrenamiento y prueba en archivos.
+	 * @param filename1 Nombre del archivo para el conjunto de entrenamiento.
+	 * @param filename2 Nombre del archivo para el conjunto de prueba.
+	 * @throws IOException Si ocurre un error al escribir en los archivos.
+	 */
 	public void write(String filename1, String filename2) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename1))) {
             train.write(filename1);
@@ -114,7 +154,13 @@ public class Entrenamiento {
             test.write(filename2);
         }
     }
-	
+
+	/**
+	 * @brief Método para leer los conjuntos de entrenamiento y prueba desde archivos.
+	 * @param filename1
+	 * @param filename2
+	 * @throws IOException
+	 */
 	public void read(String filename1, String filename2) throws IOException {
 		train = new Dataset(filename1);
         test = new Dataset(filename2);

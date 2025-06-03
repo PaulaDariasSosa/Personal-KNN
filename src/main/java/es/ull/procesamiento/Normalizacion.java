@@ -6,8 +6,15 @@ import java.util.List;
 import datos.*;
 import vectores.Vector;
 
+/**
+ * @brief Clase que implementa la normalización de los atributos cuantitativos de un dataset.
+ */
 public class Normalizacion implements Preprocesado{
-	
+	/**
+	 * @brief Procesa un conjunto de datos normalizando los atributos cuantitativos.
+	 * @param datos El conjunto de datos a procesar.
+	 * @return Una lista de atributos con los atributos cuantitativos normalizados.
+	 */
 	public List<Atributo> procesar(Dataset datos) {
 		ArrayList<Atributo> nuevos = new ArrayList<>(datos.getAtributos());
 		Cuantitativo ejemplo = new Cuantitativo();
